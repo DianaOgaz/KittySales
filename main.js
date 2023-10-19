@@ -84,7 +84,6 @@ productList.push({
     image: 'https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
 productList.push({
-    name: 'Ashu',
     price: 320,
     image: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
