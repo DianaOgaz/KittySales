@@ -34,6 +34,14 @@ nav {
 }
 
 /*----------------------------------------Menu desktop principal----------------------------*/
+
+nav{
+    top: 0;
+    position: sticky;
+    background-color: var(--white);
+}
+
+
 .navbar-left ul,
 .navbar-right ul {
     list-style: none;
@@ -285,7 +293,11 @@ nav {
 }
 
 /*----------------------------Productos-------------------------------*/
+
+
+
 .cards-container {
+  
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 240px);
@@ -295,6 +307,9 @@ nav {
 
 .product-card {
     width: 240px;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 8px;
+    padding: 8px;
 }
 
 .product-card img {
@@ -336,14 +351,18 @@ nav {
 
 /*-----------------------------------Detalle de productos---------------------*/
 .product-detail {
+
     background-color: var(--white);
     width: 360px;
     padding-bottom: 24px;
-    position: absolute;
+    position: fixed;
     right: 8px;
     border: 1px solid var(--very-light-pink);
     border-radius: 20px;
     padding: 8px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: calc(50% + 30px);
 }
 
 .product-detail-close {
