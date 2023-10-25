@@ -8,12 +8,14 @@ const cardsContainer = document.querySelector('.cards-container')//contenedor de
 const productDetailContainer = document.querySelector('.product-detail')//Detalle de productos
 const productDetailClose = document.querySelector('.product-detail-close')//
 
+
 //click es un evento de escucha, es una palabra reservada para este metodo
 
 navEmail.addEventListener('click', toggleDesktopMenu)//evento del email clickeable llama a funcion
 burgerMenu.addEventListener('click', toggleMovileMenu)
 shoopingicon.addEventListener('click', toogleProductDetail)
 productDetailClose.addEventListener('click', closeProductDetail)
+
 
 //funcion para que detecte click y se inactive o active el menu
 function toggleDesktopMenu() {
@@ -63,6 +65,10 @@ function toogleProductDetail() {
         productDetail.classList.toggle('inactive')
     }
 
+}
+function openProductDetail() {
+    productDetailContainer.classList.add('inactive')
+    console.log('olaaaaaaaaa')
 }
 function closeProductDetail() {
     productDetailContainer.classList.add('inactive')
@@ -164,7 +170,7 @@ function renderProducts(arr) {
         const cardHTML =
             `
         <div class="product-card">
-        <img scr="${product.image}">
+        <img src="${product.image}">
         <div class="product-info-cart">
         <div>
         <p>$ ${product.price}</p>
@@ -178,9 +184,12 @@ function renderProducts(arr) {
         
         `
         const cardsContainer = document.querySelector('.cards-container');
-        cardsContainer.innerHTML += cardHTML
+        cardsContainer.innerHTML += cardHTML;
 
+        const productDetailOpen = document.querySelector('.product-card')//
+        productDetailOpen.addEventListener('click', openProductDetail)
     }
+    
 }
 renderProducts(productList);
 
