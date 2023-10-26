@@ -67,7 +67,7 @@ function toogleProductDetail() {
 
 }
 function openProductDetail(product) {
-    //productDetailContainer.classList.add('inactive')
+    productDetailContainer.classList.remove('inactive')
     console.log('olaaa')
     let isThereActiveProduct = document.querySelectorAll(".product-detail").length > 0;
     if (isThereActiveProduct) {
@@ -77,67 +77,67 @@ function openProductDetail(product) {
     }
 
 }
-    function closeProductDetail() {
-        productDetailContainer.classList.add('inactive')
-    }
+function closeProductDetail() {
+    productDetailContainer.classList.add('inactive')
+}
 
 
 
 
-    //se crea arreglo para poder almacenar los productos 
-    const productList = []
-    productList.push({
-        name: 'Kitty',
-        price: 120,
-        image: 'https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    })
-    productList.push({
-        name: 'kitty',
-        price: 320,
-        image: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    })
-    productList.push({
-        name: 'Salud',
-        price: 420,
-        image: 'https://images.pexels.com/photos/1398185/pexels-photo-1398185.jpeg',
-    })
-    productList.push({
-        name: 'Salud',
-        price: 520,
-        image: 'https://images.pexels.com/photos/4012470/pexels-photo-4012470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    })
-    productList.push({
-        name: 'Salud',
-        price: 620,
-        image: 'https://images.pexels.com/photos/1835008/pexels-photo-1835008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    })
-    productList.push({
-        name: 'Salud',
-        price: 720,
-        image: 'https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    })
-    productList.push({
-        name: 'Salud',
-        price: 820,
-        image: 'https://images.pexels.com/photos/1447884/pexels-photo-1447884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    })
-    productList.push({
-        name: 'Salud',
-        price: 920,
-        image: 'https://images.pexels.com/photos/11399435/pexels-photo-11399435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    })
-    productList.push({
-        name: 'Salud',
-        price: 1020,
-        image: 'https://images.pexels.com/photos/5270660/pexels-photo-5270660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    })
+//se crea arreglo para poder almacenar los productos 
+const productList = []
+productList.push({
+    name: 'Kitty',
+    price: 120,
+    image: 'https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+})
+productList.push({
+    name: 'kitty',
+    price: 320,
+    image: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+})
+productList.push({
+    name: 'Salud',
+    price: 420,
+    image: 'https://images.pexels.com/photos/1398185/pexels-photo-1398185.jpeg',
+})
+productList.push({
+    name: 'Salud',
+    price: 520,
+    image: 'https://images.pexels.com/photos/4012470/pexels-photo-4012470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+})
+productList.push({
+    name: 'Salud',
+    price: 620,
+    image: 'https://images.pexels.com/photos/1835008/pexels-photo-1835008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+})
+productList.push({
+    name: 'Salud',
+    price: 720,
+    image: 'https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+})
+productList.push({
+    name: 'Salud',
+    price: 820,
+    image: 'https://images.pexels.com/photos/1447884/pexels-photo-1447884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+})
+productList.push({
+    name: 'Salud',
+    price: 920,
+    image: 'https://images.pexels.com/photos/11399435/pexels-photo-11399435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+})
+productList.push({
+    name: 'Salud',
+    price: 1020,
+    image: 'https://images.pexels.com/photos/5270660/pexels-photo-5270660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+})
 
-    function renderProducts(arr) {
-        //se crea una funcion con el arreglo de productos 
-        for (product of arr) {
+function renderProducts(arr) {
+    //se crea una funcion con el arreglo de productos 
+    for (product of arr) {
 
-            const cardHTML =
-                `
+        const cardHTML =
+            `
         <div class="product-card">
         <img src="${product.image}">
         <div class="product-info-cart">
@@ -152,17 +152,67 @@ function openProductDetail(product) {
         </div>
         
         `
-        
+
         const cardsContainer = document.querySelector('.cards-container')
         cardsContainer.innerHTML += cardHTML;
-        
+
         const productDetailOpen = document.querySelector('.product-card')
-    
-        productDetailOpen.onclick = function () { openProductDetail(product) }
+
+        //productDetailOpen.onclick = function () { openProductDetail(product) }
     }
 
-    }
+}
 
 renderProducts(productList);
 
 
+shoopingCartContainer.forEach((product.price) => {
+    total *= product, price;
+
+});
+
+function renderProductsCart(arr) {
+    let total = 0.00;
+  
+
+    for (product of arr) {
+
+        const cartHTML =
+            `
+    
+        <div class="my-order-content">
+        <div class="shopping-cart">
+        <figure>
+        <img src="${product.image}">
+        </figure>
+        <p>${product.name}</p>
+        <p>$${product.price}</p>
+        <img src="./icons/icon_close.png" alt="close">
+        </div>
+        </div>
+        `
+        const shoopingCartContainer = document.querySelector('.cart-detail')
+        shoopingCartContainer.innerHTML += cartHTML
+
+    }
+
+    const cartOrderHTML =
+        `
+    <div class="order">
+    <p>
+    <span>Total</span>
+    </p>
+    <p>$560.00</p>
+    </div>
+
+    <button class="primary-button">
+    Checkout
+    </button>
+    `
+    const shoopingCartOrderContainer = document.querySelector('.cart-detail')
+    shoopingCartOrderContainer.innerHTML += cartOrderHTML
+
+}
+
+
+renderProductsCart(productList);
