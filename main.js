@@ -66,114 +66,83 @@ function toogleProductDetail() {
     }
 
 }
-function openProductDetail() {
-    productDetailContainer.classList.add('inactive')
-    console.log('olaaaaaaaaa')
+function openProductDetail(product) {
+    //productDetailContainer.classList.add('inactive')
+    console.log('olaaa')
+    let isThereActiveProduct = document.querySelectorAll(".product-detail").length > 0;
+    if (isThereActiveProduct) {
+        document.querySelectorAll(".product-detail").forEach((element) => {
+            element.remove();
+        });
+    }
+
 }
-function closeProductDetail() {
-    productDetailContainer.classList.add('inactive')
-}
+    function closeProductDetail() {
+        productDetailContainer.classList.add('inactive')
+    }
 
 
 
 
-//se crea arreglo para poder almacenar los productos 
-const productList = []
-productList.push({
-    name: 'Kitty',
-    price: 120,
-    image: 'https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-})
-productList.push({
-    name: 'kitty',
-    price: 320,
-    image: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-})
-productList.push({
-    name: 'Salud',
-    price: 420,
-    image: 'https://images.pexels.com/photos/1398185/pexels-photo-1398185.jpeg',
-})
-productList.push({
-    name: 'Salud',
-    price: 520,
-    image: 'https://images.pexels.com/photos/4012470/pexels-photo-4012470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-})
-productList.push({
-    name: 'Salud',
-    price: 620,
-    image: 'https://images.pexels.com/photos/1835008/pexels-photo-1835008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-})
-productList.push({
-    name: 'Salud',
-    price: 720,
-    image: 'https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-})
-productList.push({
-    name: 'Salud',
-    price: 820,
-    image: 'https://images.pexels.com/photos/1447884/pexels-photo-1447884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-})
-productList.push({
-    name: 'Salud',
-    price: 920,
-    image: 'https://images.pexels.com/photos/11399435/pexels-photo-11399435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-})
-productList.push({
-    name: 'Salud',
-    price: 1020,
-    image: 'https://images.pexels.com/photos/5270660/pexels-photo-5270660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-})
+    //se crea arreglo para poder almacenar los productos 
+    const productList = []
+    productList.push({
+        name: 'Kitty',
+        price: 120,
+        image: 'https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    })
+    productList.push({
+        name: 'kitty',
+        price: 320,
+        image: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    })
+    productList.push({
+        name: 'Salud',
+        price: 420,
+        image: 'https://images.pexels.com/photos/1398185/pexels-photo-1398185.jpeg',
+    })
+    productList.push({
+        name: 'Salud',
+        price: 520,
+        image: 'https://images.pexels.com/photos/4012470/pexels-photo-4012470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    })
+    productList.push({
+        name: 'Salud',
+        price: 620,
+        image: 'https://images.pexels.com/photos/1835008/pexels-photo-1835008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    })
+    productList.push({
+        name: 'Salud',
+        price: 720,
+        image: 'https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    })
+    productList.push({
+        name: 'Salud',
+        price: 820,
+        image: 'https://images.pexels.com/photos/1447884/pexels-photo-1447884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    })
+    productList.push({
+        name: 'Salud',
+        price: 920,
+        image: 'https://images.pexels.com/photos/11399435/pexels-photo-11399435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    })
+    productList.push({
+        name: 'Salud',
+        price: 1020,
+        image: 'https://images.pexels.com/photos/5270660/pexels-photo-5270660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    })
 
-function renderProducts(arr) {
+    function renderProducts(arr) {
+        //se crea una funcion con el arreglo de productos 
+        for (product of arr) {
 
-    //se crea una funcion con el arreglo de productos 
-    for (product of arr) {
-        /*
-                const productCard = document.createElement('div')
-                productCard.classList.add('product-card')
-        
-                const productImg = document.createElement('img')
-                productImg.classList.add('img-product')
-        
-                productImg.setAttribute('src', product.image)
-                productImg.addEventListener('click', openProductDetail)
-        
-                const productInfo = document.createElement('div')
-                productInfo.classList.add('product-info-cart')
-        
-                const productInfoDiv = document.createElement('div')
-        
-                const productPrice = document.createElement('p')
-                productPrice.innerText = '$' + product.price
-                const productName = document.createElement('p')
-                productName.innerText = product.name
-        
-                productInfoDiv.appendChild(productPrice);
-                productInfoDiv.appendChild(productName);
-        
-                const productInfoFigure = document.createElement('figure')
-                const productImgCart = document.createElement('img')
-                productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg')
-        
-                productInfoFigure.appendChild(productImgCart);
-        
-                productInfo.appendChild(productInfoDiv);
-                productInfo.appendChild(productInfoFigure);
-        
-                productCard.appendChild(productImg);
-                productCard.appendChild(productInfo);
-        
-                cardsContainer.appendChild(productCard);
-
-*/
-        const cardHTML =
-            `
+            const cardHTML =
+                `
         <div class="product-card">
         <img src="${product.image}">
         <div class="product-info-cart">
         <div>
-        <p>$ ${product.price}</p>
+        <p>$${product.price}</p>
         <p>${product.name}</p>
         </div>
         <figure>
@@ -183,14 +152,17 @@ function renderProducts(arr) {
         </div>
         
         `
-        const cardsContainer = document.querySelector('.cards-container');
+        
+        const cardsContainer = document.querySelector('.cards-container')
         cardsContainer.innerHTML += cardHTML;
-
-        const productDetailOpen = document.querySelector('.product-card')//
-        productDetailOpen.addEventListener('click', openProductDetail)
-    }
+        
+        const productDetailOpen = document.querySelector('.product-card')
     
-}
+        productDetailOpen.onclick = function () { openProductDetail(product) }
+    }
+
+    }
+
 renderProducts(productList);
 
 
