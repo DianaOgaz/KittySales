@@ -7,6 +7,7 @@ const productDetail = document.querySelector('.cart-detail')//carrito de compras
 const cardsContainer = document.querySelector('.cards-container')//contenedor de los productos
 const productDetailContainer = document.querySelector('.product-detail')//Detalle de productos
 const productDetailClose = document.querySelector('.product-detail-close')//
+const closecloseProductInCart = document.querySelector('.closeProductInCart')
 
 
 //click es un evento de escucha, es una palabra reservada para este metodo
@@ -16,6 +17,10 @@ burgerMenu.addEventListener('click', toggleMovileMenu)
 shoopingicon.addEventListener('click', toogleProductDetail)
 productDetailClose.addEventListener('click', closeProductDetail)
 
+function closeProductDetail(){
+    const productCart = document.querySelector('.shopping-cart')
+    productCart.classList.cardHTML
+}
 
 //funcion para que detecte click y se inactive o active el menu
 function toggleDesktopMenu() {
@@ -166,10 +171,7 @@ function renderProducts(arr) {
 renderProducts(productList);
 
 
-shoopingCartContainer.forEach((product.price) => {
-    total *= product, price;
 
-});
 
 function renderProductsCart(arr) {
     let total = 0.00;
@@ -187,7 +189,7 @@ function renderProductsCart(arr) {
         </figure>
         <p>${product.name}</p>
         <p>$${product.price}</p>
-        <img src="./icons/icon_close.png" alt="close">
+        <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
         </div>
         </div>
         `
