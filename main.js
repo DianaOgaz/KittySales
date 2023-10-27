@@ -8,6 +8,7 @@ const cardsContainer = document.querySelector('.cards-container')//contenedor de
 const productDetailContainer = document.querySelector('.product-detail')//Detalle de productos
 const productDetailClose = document.querySelector('.product-detail-close')//
 const closecloseProductInCart = document.querySelector('.closeProductInCart')
+const priceCartTotal = document.querySelector('#productCartPriceLabel')
 
 
 //click es un evento de escucha, es una palabra reservada para este metodo
@@ -17,7 +18,7 @@ burgerMenu.addEventListener('click', toggleMovileMenu)
 shoopingicon.addEventListener('click', toogleProductDetail)
 productDetailClose.addEventListener('click', closeProductDetail)
 
-function closeProductDetail(){
+function closeProductDetail() {
     const productCart = document.querySelector('.shopping-cart')
     productCart.classList.cardHTML
 }
@@ -174,8 +175,6 @@ renderProducts(productList);
 
 
 function renderProductsCart(arr) {
-    let total = 0.00;
-  
 
     for (product of arr) {
 
@@ -198,13 +197,14 @@ function renderProductsCart(arr) {
 
     }
 
+    
     const cartOrderHTML =
         `
     <div class="order">
     <p>
     <span>Total</span>
     </p>
-    <p>$560.00</p>
+    <p id="productCartPriceLabel">$ </p>
     </div>
 
     <button class="primary-button">
@@ -213,8 +213,27 @@ function renderProductsCart(arr) {
     `
     const shoopingCartOrderContainer = document.querySelector('.cart-detail')
     shoopingCartOrderContainer.innerHTML += cartOrderHTML
+    
+    productPriceCart(productList)
+    console.log(productPriceCart(total))
 
 }
 
 
 renderProductsCart(productList);
+
+function productPriceCart(arr) {
+    let total = 0.00;
+
+    for (product of arr) {
+        total += product.price;
+    }
+
+    const priceCartTotal = document.querySelector('#productCartPriceLabel')
+    priceCartTotal.classList.innerText = "total";
+    console.log(total)
+
+    return(total)
+
+}
+
