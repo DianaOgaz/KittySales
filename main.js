@@ -9,6 +9,7 @@ const productDetailContainer = document.querySelector('.product-detail')//Detall
 const productDetailClose = document.querySelector('.product-detail-close')//
 const closecloseProductInCart = document.querySelector('.closeProductInCart')
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
+const deleteProductOrder = document.querySelector('#closeProductInCart')
 
 
 //click es un evento de escucha, es una palabra reservada para este metodo
@@ -17,6 +18,7 @@ navEmail.addEventListener('click', toggleDesktopMenu)//evento del email clickeab
 burgerMenu.addEventListener('click', toggleMovileMenu)
 shoopingicon.addEventListener('click', toogleProductDetail)
 productDetailClose.addEventListener('click', closeProductDetail)
+//deleteProductOrder.addEventListener('click', deleteProductInCart)
 
 function closeProductDetail() {
     const productCart = document.querySelector('.shopping-cart')
@@ -75,12 +77,6 @@ function toogleProductDetail() {
 function openProductDetail(product) {
     productDetailContainer.classList.remove('inactive')
     console.log('olaaa')
-    let isThereActiveProduct = document.querySelectorAll(".product-detail").length > 0;
-    if (isThereActiveProduct) {
-        document.querySelectorAll(".product-detail").forEach((element) => {
-            element.remove();
-        });
-    }
 
 }
 function closeProductDetail() {
@@ -141,7 +137,7 @@ productList.push({
 function renderProducts(arr) {
     //se crea una funcion con el arreglo de productos 
     for (product of arr) {
-
+    
         const cardHTML =
             `
         <div class="product-card">
@@ -162,9 +158,10 @@ function renderProducts(arr) {
         const cardsContainer = document.querySelector('.cards-container')
         cardsContainer.innerHTML += cardHTML;
 
-        const productDetailOpen = document.querySelector('.product-card')
+        const productDetail = cardsContainer.lastElementChild;
 
-        //productDetailOpen.onclick = function () { openProductDetail(product) }
+        productDetail.addEventListener('click',openProductDetail(product))
+
     }
 
 }
@@ -177,10 +174,9 @@ renderProducts(productList);
 function renderProductsCart(arr) {
 
     for (product of arr) {
-
+        
         const cartHTML =
             `
-    
         <div class="my-order-content">
         <div class="shopping-cart">
         <figure>
@@ -198,9 +194,7 @@ function renderProductsCart(arr) {
     }
     productPriceCart(productList)
 
-
 }
-
 
 renderProductsCart(productList);
 
@@ -213,7 +207,10 @@ function productPriceCart(arr) {
 
     const priceCartTotal = document.querySelector('#productCartPriceLabel')
     priceCartTotal.innerText = '$' +total;
-    console.log(total)
+
+}
+
+function deleteProductInCart (){
 
 }
 
