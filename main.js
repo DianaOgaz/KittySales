@@ -93,47 +93,47 @@ function closeProductDetail() {
 //se crea arreglo para poder almacenar los productos 
 const productList = []
 productList.push({
-    name: 'Kitty',
+    name: 'Gatito',
     price: 120,
     image: 'https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
 productList.push({
-    name: 'kitty',
+    name: 'Ojón',
     price: 320,
     image: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
 productList.push({
-    name: 'Salud',
+    name: 'Patitas',
     price: 420,
     image: 'https://images.pexels.com/photos/1398185/pexels-photo-1398185.jpeg',
 })
 productList.push({
-    name: 'Salud',
+    name: 'Hermanitos',
     price: 520,
     image: 'https://images.pexels.com/photos/4012470/pexels-photo-4012470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
 productList.push({
-    name: 'Salud',
+    name: 'Ojotes',
     price: 620,
     image: 'https://images.pexels.com/photos/1835008/pexels-photo-1835008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
 productList.push({
-    name: 'Salud',
+    name: 'Menso',
     price: 720,
     image: 'https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
 productList.push({
-    name: 'Salud',
+    name: 'Cat Noir',
     price: 820,
     image: 'https://images.pexels.com/photos/1447884/pexels-photo-1447884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
 productList.push({
-    name: 'Salud',
+    name: 'Cheto',
     price: 920,
     image: 'https://images.pexels.com/photos/11399435/pexels-photo-11399435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
 productList.push({
-    name: 'Salud',
+    name: 'Cheto Enojado',
     price: 1020,
     image: 'https://images.pexels.com/photos/5270660/pexels-photo-5270660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 })
@@ -192,30 +192,12 @@ function renderProductsCart(arr) {
         </div>
         </div>
         `
-        const shoopingCartContainer = document.querySelector('.cart-detail')
+        const shoopingCartContainer = document.querySelector('.cart-detail-order')
         shoopingCartContainer.innerHTML += cartHTML
 
     }
-
-    
-    const cartOrderHTML =
-        `
-    <div class="order">
-    <p>
-    <span>Total</span>
-    </p>
-    <p id="productCartPriceLabel">$ </p>
-    </div>
-
-    <button class="primary-button">
-    Checkout
-    </button>
-    `
-    const shoopingCartOrderContainer = document.querySelector('.cart-detail')
-    shoopingCartOrderContainer.innerHTML += cartOrderHTML
-    
     productPriceCart(productList)
-    console.log(productPriceCart(total))
+
 
 }
 
@@ -230,10 +212,8 @@ function productPriceCart(arr) {
     }
 
     const priceCartTotal = document.querySelector('#productCartPriceLabel')
-    priceCartTotal.classList.innerText = "total";
+    priceCartTotal.innerText = '$' +total;
     console.log(total)
-
-    return(total)
 
 }
 
