@@ -148,7 +148,10 @@ function renderProducts(arr) {
         <p>${product.name}</p>
         </div>
         <figure>
-        <img src= "./icons/bt_add_to_cart.svg" alt="product image">
+        <div style="width: 50px;height: 50px;background-color: plum;border-radius: 50%; display: flex; font-size: var(--lg);">
+        <img src="./icons/icon_shopping_cart.svg" style="width: 35px;height: 35px;  align-self: center;">
+        +
+        </div>
         </figure>
         </div>
         </div>
