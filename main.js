@@ -76,7 +76,7 @@ function toogleProductDetail() {
 }
 function openProductDetail(product) {
     productDetailContainer.classList.remove('inactive')
-    console.log('olaaa')
+    
   
 }
 function closeProductDetail() {
@@ -159,13 +159,15 @@ function renderProducts(arr) {
         `
         const cardsContainer = document.querySelector('.cards-container')
         cardsContainer.innerHTML += cardHTML;
-
-        const productDetail = cardsContainer.lastElementChild;
+        const productDetail = cardsContainer;
 
         productDetail.addEventListener('click', function() {
             openProductDetail(product);
-            console.log('si jala')
+            
         });
+        
+
+
 
     }
 

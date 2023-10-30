@@ -14,7 +14,7 @@
 body {
     margin: 0;
     font-family: 'Quicksand', sans-serif;
-    color: purple;
+    background-color: #f5eff7;
 }
 
 .burgerMenu {
@@ -426,7 +426,7 @@ height: 50px;
 }
 
 .primary-button {
-    background-color: var(--hospital-green);
+    background-color: plum;
     border-radius: 8px;
     border: none;
     color: var(--white);
@@ -439,8 +439,9 @@ height: 50px;
 
 .add-to-cart-button {
     display: flex;
+    margin-right: 20px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 /*---------------------------------------media querys-------------------------*/
