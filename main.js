@@ -4,12 +4,9 @@ const burgerMenu = document.querySelector('.burgerMenu')//icono Burger
 const sideMenuMovil = document.querySelector('.mobile-menu')//Menu desplegabla movile
 const shoopingicon = document.querySelector('.navbar-shopping-cart') //shoopingcart icon
 const productDetail = document.querySelector('.cart-detail')//carrito de compras
-const cardsContainer = document.querySelector('.cards-container')//contenedor de los productos
 const productDetailContainer = document.querySelector('.product-detail')//Detalle de productos
-const productDetailClose = document.querySelector('.product-detail-close')//
 const closecloseProductInCart = document.querySelector('.closeProductInCart')
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
-const deleteProductOrder = document.querySelector('#closeProductInCart')
 
 
 //click es un evento de escucha, es una palabra reservada para este metodo
@@ -17,13 +14,7 @@ const deleteProductOrder = document.querySelector('#closeProductInCart')
 navEmail.addEventListener('click', toggleDesktopMenu)//evento del email clickeable llama a funcion
 burgerMenu.addEventListener('click', toggleMovileMenu)
 shoopingicon.addEventListener('click', toogleProductDetail)
-productDetailClose.addEventListener('click', closeProductDetail)
-//deleteProductOrder.addEventListener('click', deleteProductInCart)
 
-function closeProductDetail() {
-    const productCart = document.querySelector('.shopping-cart')
-    productCart.classList.cardHTML
-}
 
 //funcion para que detecte click y se inactive o active el menu
 function toggleDesktopMenu() {
@@ -74,11 +65,7 @@ function toogleProductDetail() {
     }
 
 }
-function openProductDetail(product) {
-    productDetailContainer.classList.remove('inactive')
-    
-  
-}
+
 function closeProductDetail() {
     productDetailContainer.classList.add('inactive')
 }
@@ -92,52 +79,61 @@ productList.push({
     name: 'Gatito',
     price: 120,
     image: 'https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 1',
 })
 productList.push({
     name: 'Ojón',
     price: 320,
     image: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 2',
 })
 productList.push({
     name: 'Patitas',
     price: 420,
     image: 'https://images.pexels.com/photos/1398185/pexels-photo-1398185.jpeg',
+    description: 'Kitty 3',
 })
 productList.push({
-    name: 'Hermanitos',
-    price: 520,
-    image: 'https://images.pexels.com/photos/4012470/pexels-photo-4012470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-})
-productList.push({
-    name: 'Ojotes',
     price: 620,
     image: 'https://images.pexels.com/photos/1835008/pexels-photo-1835008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 4',
 })
 productList.push({
     name: 'Menso',
     price: 720,
     image: 'https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 5',
 })
 productList.push({
     name: 'Cat Noir',
     price: 820,
     image: 'https://images.pexels.com/photos/1447884/pexels-photo-1447884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 6',
 })
 productList.push({
     name: 'Cheto',
     price: 920,
     image: 'https://images.pexels.com/photos/11399435/pexels-photo-11399435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 7',
 })
 productList.push({
     name: 'Cheto Enojado',
     price: 1020,
     image: 'https://images.pexels.com/photos/5270660/pexels-photo-5270660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 8'
+})
+productList.push({
+    name: 'Gato Sparrow',
+    price: 1020,
+    image: 'https://static.wixstatic.com/media/1a82fe_5c1659e17fb54610bd19326750191a0f~mv2_d_3984_2656_s_4_2.jpg/v1/fill/w_480,h_322,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1a82fe_5c1659e17fb54610bd19326750191a0f~mv2_d_3984_2656_s_4_2.jpg',
+    description: 'Kitty 9',
 })
 
-function renderProducts(arr) {
+function renderProducts(arr) {//Muestra los productos 
     //se crea una funcion con el arreglo de productos 
     for (product of arr) {
-    
+        const cardsContainer = document.querySelector('.cards-container')
+
         const cardHTML =
             `
         <div class="product-card">
@@ -155,33 +151,46 @@ function renderProducts(arr) {
         </figure>
         </div>
         </div>
-        
         `
-        const cardsContainer = document.querySelector('.cards-container')
         cardsContainer.innerHTML += cardHTML;
-        const productDetail = cardsContainer;
 
-        productDetail.addEventListener('click', function() {
-            openProductDetail(product);
-            
+        const productDetail = cardsContainer.lastElementChild;
+        productDetail.addEventListener('click', function () {
+            console.log('entró a la función') //No se ejecuta esta linea de códio
         });
-        
-
-
-
     }
 
+}//fin
+function openProductDetail(product) {
+    console.log('click')
+    const productDetailHTML =
+        `
+    <div class="product-detail-close">
+    <img src="./icons/icon_close.png" alt="close">
+    </div>
+    <img src="${product.image}">
+    <div class="product-info">
+    <p>$${product.price}</p>
+    <p>${product.name}</p>
+    <p>${product.description}</p>
+    <button class="primary-button add-to-cart-button">
+    <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
+    Add to cart
+    </button>
+    </div>
+    `
+    productDetailContainer.innerHTML = productDetailHTML;
+    productDetailContainer.classList.remove('inactive')
+
+    console.log('ola')
 }
 
 renderProducts(productList);
 
-
-
-
-function renderProductsCart(arr) {
+function renderProductsCart(arr) {//Productos en carrito
 
     for (product of arr) {
-        
+
         const cartHTML =
             `
         <div class="my-order-content">
@@ -199,8 +208,6 @@ function renderProductsCart(arr) {
         shoopingCartContainer.innerHTML += cartHTML
 
     }
-    productPriceCart(productList)
-
 }
 
 renderProductsCart(productList);
@@ -213,11 +220,7 @@ function productPriceCart(arr) {
     }
 
     const priceCartTotal = document.querySelector('#productCartPriceLabel')
-    priceCartTotal.innerText = '$' +total;
-
-}
-
-function deleteProductInCart (){
+    priceCartTotal.innerText = '$' + total;
 
 }
 
