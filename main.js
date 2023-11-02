@@ -9,11 +9,13 @@ const closecloseProductInCart = document.querySelector('.closeProductInCart')
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
 
 
+
 //click es un evento de escucha, es una palabra reservada para este metodo
 
 navEmail.addEventListener('click', toggleDesktopMenu)//evento del email clickeable llama a funcion
 burgerMenu.addEventListener('click', toggleMovileMenu)
 shoopingicon.addEventListener('click', toogleProductDetail)
+
 
 
 //funcion para que detecte click y se inactive o active el menu
@@ -66,11 +68,13 @@ function toogleProductDetail() {
 
 }
 
+
+
+
+
 function closeProductDetail() {
     productDetailContainer.classList.add('inactive')
 }
-
-
 
 
 //se crea arreglo para poder almacenar los productos 
@@ -131,8 +135,8 @@ productList.push({
 
 function renderProducts(arr) {//Muestra los productos 
     //se crea una funcion con el arreglo de productos 
+    const cardsContainer = document.querySelector('.cards-container')
     for (product of arr) {
-        const cardsContainer = document.querySelector('.cards-container')
 
         const cardHTML =
             `
@@ -154,13 +158,19 @@ function renderProducts(arr) {//Muestra los productos
         `
         cardsContainer.innerHTML += cardHTML;
 
-        const productDetail = cardsContainer.lastElementChild;
+        const productDetail = cardsContainer;
+
+        
         productDetail.addEventListener('click', function () {
-            console.log('entró a la función') //No se ejecuta esta linea de códio
+            openProductDetail(product);
+    
         });
     }
-
+    
 }//fin
+renderProducts(productList);
+
+
 function openProductDetail(product) {
     console.log('click')
     const productDetailHTML =
@@ -179,13 +189,15 @@ function openProductDetail(product) {
     </button>
     </div>
     `
+
     productDetailContainer.innerHTML = productDetailHTML;
     productDetailContainer.classList.remove('inactive')
 
-    console.log('ola')
+    const closeProductD = document.querySelector('.product-detail-close')
+    closeProductD.addEventListener('click', closeProductDetail)
+
 }
 
-renderProducts(productList);
 
 function renderProductsCart(arr) {//Productos en carrito
 
@@ -206,7 +218,7 @@ function renderProductsCart(arr) {//Productos en carrito
         `
         const shoopingCartContainer = document.querySelector('.cart-detail-order')
         shoopingCartContainer.innerHTML += cartHTML
-
+        productPriceCart(arr)
     }
 }
 
