@@ -98,6 +98,7 @@ productList.push({
     description: 'Kitty 3',
 })
 productList.push({
+    name: 'Ojotes',
     price: 620,
     image: 'https://images.pexels.com/photos/1835008/pexels-photo-1835008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 4',
@@ -148,9 +149,9 @@ function renderProducts(arr) {//Muestra los productos
         <p>${product.name}</p>
         </div>
         <figure>
-        <div style="width: 50px;height: 50px;background-color: plum;border-radius: 50%; display: flex; font-size: var(--lg);">
-        <img src="./icons/icon_shopping_cart.svg" style="width: 35px;height: 35px;  align-self: center;">
-        +
+        <div style="width: 50px;height: 50px;">
+        <img src="./logos/kittyPaw.webp" style="width:100%; height:85%;">
+        
         </div>
         </figure>
         </div>
