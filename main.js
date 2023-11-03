@@ -158,21 +158,22 @@ function renderProducts(arr) {//Muestra los productos
         `
         cardsContainer.innerHTML += cardHTML;
 
-        const productDetail = cardsContainer;
+    }
+    const productDetailSelector = document.querySelectorAll('.product-card')
+    console.log(productDetailSelector)
 
-        
-        productDetail.addEventListener('click', function () {
-            openProductDetail(product);
-    
+    for (let i = 0; i < productDetailSelector.length; i++) { //Se crea un for que otere todos los elementos del arreglo, en este caso .product-card
+        productDetailSelector[i].addEventListener('click', function () { //se añade el event listener por cada elemento
+            openProductDetail(arr[i]);//se abre el elemento seleccionado :I No se porqué no se me ocurrió 
         });
     }
-    
+
 }//fin
 renderProducts(productList);
 
 
 function openProductDetail(product) {
-    console.log('click')
+    console.log('click')//No se imprime, no entra a la funcion
     const productDetailHTML =
         `
     <div class="product-detail-close">
@@ -202,6 +203,7 @@ function openProductDetail(product) {
 function renderProductsCart(arr) {//Productos en carrito
 
     for (product of arr) {
+
 
         const cartHTML =
             `
