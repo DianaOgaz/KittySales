@@ -10,6 +10,7 @@ const priceCartTotal = document.querySelector('#productCartPriceLabel')
 
 
 
+
 //click es un evento de escucha, es una palabra reservada para este metodo
 
 navEmail.addEventListener('click', toggleDesktopMenu)//evento del email clickeable llama a funcion
@@ -185,8 +186,8 @@ function openProductDetail(product) {
     <p>$${product.price}</p>
     <p>${product.name}</p>
     <p>${product.description}</p>
-    <button class="primary-button add-to-cart-button">
-    <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
+    <button id="add-to-cart-button" class="primary-button add-to-cart-button">
+    <img src="./logos/kittyPaw.webp" alt="add to cart" style="width: 45px;height: 45px;">
     Add to cart
     </button>
     </div>
@@ -198,16 +199,17 @@ function openProductDetail(product) {
     const closeProductD = document.querySelector('.product-detail-close')
     closeProductD.addEventListener('click', closeProductDetail)
 
+
+    const addToCartButton = document.querySelector('#add-to-cart-button')
+    addToCartButton.addEventListener('click', function(){
+        renderProductsCart(product)
+    })
+
 }
 
-
-function renderProductsCart(arr) {//Productos en carrito
-
-    for (product of arr) {
-
-
-        const cartHTML =
-            `
+function renderProductsCart(product) {//Productos en carrito
+    const cartHTML =
+        `
         <div class="my-order-content">
         <div class="shopping-cart">
         <figure>
@@ -219,21 +221,16 @@ function renderProductsCart(arr) {//Productos en carrito
         </div>
         </div>
         `
-        const shoopingCartContainer = document.querySelector('.cart-detail-order')
-        shoopingCartContainer.innerHTML += cartHTML
-        productPriceCart(arr)
-    }
+    const shoopingCartContainer = document.querySelector('.cart-detail-order')
+    shoopingCartContainer.innerHTML += cartHTML
+    productPriceCart(product)
 }
 
-renderProductsCart(productList);
-
-function productPriceCart(arr) {
+function productPriceCart(product) {
     let total = 0.00;
-
-    for (product of arr) {
+    for (let i = 0; i < product, length; i++) {
         total += product.price;
     }
-
     const priceCartTotal = document.querySelector('#productCartPriceLabel')
     priceCartTotal.innerText = '$' + total;
 
