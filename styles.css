@@ -403,6 +403,11 @@ height: 50px;
 .product-info {
     margin: 24px 24px 24px 24px;
 }
+.product-info p {
+    width: 312px;
+    max-height: 170px;
+    overflow: hidden;
+}
 
 .product-info p:nth-child(1) {
     font-weight: bold;
