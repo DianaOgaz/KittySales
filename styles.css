@@ -90,6 +90,9 @@ nav{
     width: 50px;
     height: 50px;
 }
+.navbar-shopping-cart:hover {
+    cursor: pointer;
+}
 
 .navbar-shopping-cart div {
     width: 25px;
@@ -439,6 +442,32 @@ height: 50px;
     align-items: center;
     justify-content: space-evenly;
 }
+
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    margin-top: 50px;
+    height: 150px;
+    width: 100%;
+    background-color: plum;
+}
+
+
+.footer-right{
+    width: 50%;
+
+}
+.footer-left{
+    width: 50%;
+
+}
+.footer-right, ul, li{
+    display: flex;
+    list-style: none;
+    padding-left: 20px;
+}
+
 
 /*---------------------------------------media querys-------------------------*/
 @media (max-width: 740px) {
