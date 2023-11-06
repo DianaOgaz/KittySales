@@ -63,22 +63,15 @@ nav{
     display: flex;
 }
 
-.navbar-left ul {
-    margin-left: 20px;
-}
 
 .navbar-left ul li a,
 .navbar-right ul li a {
     text-decoration: none;
-    border: 1px solid var(--white);
     padding: 18px;
-    border-radius: 8px;
-    margin-left: 20px;
 }
 
 .navbar-left ul li a:hover,
 .navbar-right ul li a:hover {
-    border: 1px solid var(--black);
     color: var(--black);
 }
 
@@ -365,10 +358,8 @@ height: 50px;
 .product-detail {
 
     background-color: var(--white);
-    width: 360px;
     padding-bottom: 24px;
     position: fixed;
-    right: 8px;
     border: 1px solid var(--very-light-pink);
     border-radius: 20px;
     padding: 8px;
@@ -472,6 +463,7 @@ height: 50px;
 
     .product-detail {
         width: calc(100% - 36px);
+        
     }
 
     /*productos*/

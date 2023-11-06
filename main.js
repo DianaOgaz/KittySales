@@ -7,6 +7,7 @@ const productDetail = document.querySelector('.cart-detail')//carrito de compras
 const productDetailContainer = document.querySelector('.product-detail')//Detalle de productos
 const closecloseProductInCart = document.querySelector('.closeProductInCart')
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
+const porductItemsCount = document.querySelector('#itemsCount')
 
 let shoppingCart = []
 
@@ -136,6 +137,96 @@ productList.push({
     image: 'https://static.wixstatic.com/media/1a82fe_5c1659e17fb54610bd19326750191a0f~mv2_d_3984_2656_s_4_2.jpg/v1/fill/w_480,h_322,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1a82fe_5c1659e17fb54610bd19326750191a0f~mv2_d_3984_2656_s_4_2.jpg',
     description: 'Kitty 9   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
 })
+productList.push({
+    name: 'Gatita Reina',
+    price: 2020,
+    image: 'https://images.pexels.com/photos/1314550/pexels-photo-1314550.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 10   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'Gato Loco',
+    price: 3020,
+    image: 'https://images.pexels.com/photos/1112621/pexels-photo-1112621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 11   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'Gato Esponjoso',
+    price: 4020,
+    image: 'https://images.pexels.com/photos/12344999/pexels-photo-12344999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 12   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'Gato Mimiendo',
+    price: 5020,
+    image: 'https://images.pexels.com/photos/1560424/pexels-photo-1560424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 13   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'Gato Baka',
+    price: 6020,
+    image: 'https://images.pexels.com/photos/3155894/pexels-photo-3155894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 14   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'Gato Estudihambre',
+    price: 7020,
+    image: 'https://images.pexels.com/photos/1852914/pexels-photo-1852914.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 15   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'Gato Cono de la Verguenza',
+    price: 8020,
+    image: 'https://images.pexels.com/photos/776374/pexels-photo-776374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 16  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'El Toto',
+    price: 10020,
+    image: 'https://images.pexels.com/photos/691583/pexels-photo-691583.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 17  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'El Nachito',
+    price: 11020,
+    image: 'https://images.pexels.com/photos/1381112/pexels-photo-1381112.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 18  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'El Sushi',
+    price: 12020,
+    image: 'https://images.pexels.com/photos/1441586/pexels-photo-1441586.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 19  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'El Zafiro',
+    price: 13020,
+    image: 'https://images.pexels.com/photos/1262943/pexels-photo-1262943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 20  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'El Tilin',
+    price: 14020,
+    image: 'https://images.pexels.com/photos/13178239/pexels-photo-13178239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 21  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'El Panda',
+    price: 15020,
+    image: 'https://images.pexels.com/photos/13027589/pexels-photo-13027589.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 22  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'El Polvorón',
+    price: 16020,
+    image: 'https://images.pexels.com/photos/9845135/pexels-photo-9845135.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 23  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
+productList.push({
+    name: 'El Salsa',
+    price: 17020,
+    image: 'https://images.pexels.com/photos/5263698/pexels-photo-5263698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Kitty 24  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+})
 
 function renderProducts(arr) {//Muestra los productos 
     //se crea una funcion con el arreglo de productos 
@@ -239,6 +330,7 @@ function productPriceCart(shoopingcart) {
 
     const priceCartTotal = document.querySelector('#productCartPriceLabel')
     priceCartTotal.innerText = '$' + total;
+    porductItemsCount.innerText = shoopingcart.length
 
 }
 
