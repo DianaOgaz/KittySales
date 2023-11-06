@@ -8,6 +8,7 @@ const productDetailContainer = document.querySelector('.product-detail')//Detall
 const closecloseProductInCart = document.querySelector('.closeProductInCart')
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
 
+let shoppingCart = []
 
 
 
@@ -224,19 +225,16 @@ function renderProductsCart(product) {//Productos en carrito
         `
     const shoopingCartContainer = document.querySelector('.cart-detail-order')
     shoopingCartContainer.innerHTML += cartHTML
-    productPriceCart(product)
-
-    console.log("Objeto " + typeof(product)) //Se imprime object
-    const arrayProductsOnCart = Object.values(product)
-    console.log("Arreglo " + typeof(arrayProductsOnCart))// Otra vez imprime object
+    
+    shoppingCart.push(product)
+    productPriceCart(shoppingCart)
 }
 
-function productPriceCart(product) {
+function productPriceCart(shoopingcart) {
     let total = 0.00;
 
-    for (let i = 0; i < product.length; i++) {
-        total += product.price;
-
+    for (let i = 0; i < shoopingcart.length; i++) {
+        total += shoopingcart[i].price
     }
 
     const priceCartTotal = document.querySelector('#productCartPriceLabel')
