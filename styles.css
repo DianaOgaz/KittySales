@@ -61,12 +61,19 @@ nav{
 
 .navbar-left {
     display: flex;
+    align-items: center;
 }
-
+.navbar-right{
+    display: flex;
+    align-items: first baseline;
+    color: #ffffff;
+}
 
 .navbar-left ul li a,
 .navbar-right ul li a {
     text-decoration: none;
+    font-weight: 900;
+    color: #ffffff;
     padding: 18px;
 }
 
