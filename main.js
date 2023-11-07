@@ -319,12 +319,12 @@ function openProductDetail(product) {
 }
 
 function renderProductsCart(product) {//Productos en carrito
-    shoppingCart.push(product)
-
-
+    const arr = Object.values(product)
+    
     let duplicated = 1;
-    for (let i = 0; i < shoppingCart.length; i++) {
-        if (shoppingCart[i - 1] !== shoppingCart[i] || i == 0) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== arr[i - 1] || i == 0) {
+            console.log('entró al if') //no entra al if
             const cartHTML =
             `
             <div class="my-order-content">
@@ -332,7 +332,7 @@ function renderProductsCart(product) {//Productos en carrito
             <figure>
             <img src="${product.image}">
             </figure>
-            <p id ="productDuplicated" >${product.name}</p>
+            <p class ="productName" >${product.name}</p>
             <p>$${product.price}</p>
             <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
             </div>
@@ -340,9 +340,10 @@ function renderProductsCart(product) {//Productos en carrito
             `
             const shoopingCartContainer = document.querySelector('.cart-detail-order')
             shoopingCartContainer.innerHTML += cartHTML
+            shoppingCart.push(product[i])
             
         }else {
-            const duplicatedProduct = document.querySelector('#productDuplicated')
+            const duplicatedProduct = document.querySelector('.productName')
             console.log('Producto duplicado!  ')
             duplicated++
             duplicatedProduct.innerText = product.name + ' x ' + duplicated
@@ -365,13 +366,13 @@ function productPriceCart(shoopingcart) {
     porductItemsCount.innerText = shoopingcart.length
 
 }
-bigKittysButton(productList)
 function bigKittysButton (productList){
-    const arr = Object.values(productList)
-    const findBigKittys = arr.find(function(arr){
+    const arr = Object.values(productList) 
+    const findBigKittys = arr.filter(function(arr){
         return arr.category === 'Big Kitty'
     })
-    console.log('Funcion de búsqueda ' + findBigKittys)
+    console.log('Funcion de búsqueda ', findBigKittys) 
+    renderProducts([findBigKittys])
 }
 
 
