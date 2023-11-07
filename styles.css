@@ -72,7 +72,7 @@ nav{
 .navbar-left ul li a,
 .navbar-right ul li a {
     text-decoration: none;
-    font-weight: 900;
+    font-weight: bolder;
     color: #ffffff;
     padding: 18px;
 }
@@ -143,6 +143,9 @@ nav{
 .desktop-menu ul li {
     text-align: end;
 }
+.desktop-menu li:hover {
+    color: plum;
+}
 
 .desktop-menu ul li:nth-child(1),
 .desktop-menu ul li:nth-child(2) {
@@ -155,7 +158,8 @@ nav{
 }
 
 .desktop-menu ul li:last-child a {
-    color: var(--hospital-green);
+    color: plum;
+    font-weight: bold;
     font-size: var(--sm);
 }
 
@@ -208,7 +212,7 @@ nav{
 
 .sign-out {
     font-size: var(--sm);
-    color: var(--hospital-green) !important;
+    color: plum !important;
 }
 
 /*-------------------------------Carrito de compras---------------------------*/
@@ -219,7 +223,7 @@ nav{
     width: 380px;
     padding: 0 24px 24px 24px;
     box-sizing: border-box;
-    position: absolute;
+    position: fixed;
     right: 8px;
 }
 
@@ -369,7 +373,7 @@ height: 50px;
 
     background-color: var(--white);
     padding-bottom: 24px;
-    position: fixed;
+    position: absolute;
     border: 1px solid var(--very-light-pink);
     border-radius: 20px;
     padding: 8px;
@@ -469,7 +473,7 @@ footer{
     width: 50%;
 
 }
-.footer-right, ul, li{
+.footer-right ul {
     display: flex;
     list-style: none;
     padding-left: 20px;
@@ -477,7 +481,7 @@ footer{
 
 
 /*---------------------------------------media querys-------------------------*/
-@media (max-width: 740px) {
+@media (max-width: 741px) {
     .burgerMenu {
         display: flex;
         width: 50px;
@@ -498,8 +502,9 @@ footer{
     }
 
     .product-detail {
-        width: calc(100% - 36px);
-        
+        left: 45%;
+        transform: translate(-50%, -50%); /*mantiene el elemento centrado horizontalmente y verticalmente */
+        top: 60%
     }
 
     /*productos*/
@@ -519,9 +524,30 @@ footer{
         top:120px;
     }
 }
-
+@media(max-width:500px){
+    .product-detail {
+        left: 50%;
+        height: 615px;
+        transform: translate(-50%, -50%); /*mantiene el elemento centrado horizontalmente y verticalmente */  
+        top: 58%
+    }
+    .product-info p {
+        width: 265px;
+        max-height: 170px;
+        overflow: hidden;
+    }
+    .product-info p:nth-child(2) {
+        margin-bottom: 5px;
+    }
+    .product-info p:nth-child(3) {
+        margin-bottom: 5px;
+    }
+}
 @media(min-width: 741px) {
     .mobile-menu {
         display: none;
+    }
+    .product-detail{
+        top: 60%
     }
 }
