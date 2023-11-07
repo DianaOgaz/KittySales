@@ -8,6 +8,7 @@ const productDetailContainer = document.querySelector('.product-detail')//Detall
 const closecloseProductInCart = document.querySelector('.closeProductInCart')
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
 const porductItemsCount = document.querySelector('#itemsCount')
+const bigKittys = document.querySelector('#big-kittys')
 
 let shoppingCart = []
 
@@ -19,8 +20,7 @@ let shoppingCart = []
 navEmail.addEventListener('click', toggleDesktopMenu)//evento del email clickeable llama a funcion
 burgerMenu.addEventListener('click', toggleMovileMenu)
 shoopingicon.addEventListener('click', toogleProductDetail)
-
-
+bigKittys.addEventListener('click', bigKittysButton)
 
 //funcion para que detecte click y se inactive o active el menu
 function toggleDesktopMenu() {
@@ -42,7 +42,6 @@ function toggleDesktopMenu() {
     }
 
 }
-
 
 function toggleMovileMenu() {
     const isProductDetailOpen = !productDetail.classList.contains('inactive')
@@ -72,14 +71,9 @@ function toogleProductDetail() {
 
 }
 
-
-
-
-
 function closeProductDetail() {
     productDetailContainer.classList.add('inactive')
 }
-
 
 //se crea arreglo para poder almacenar los productos 
 const productList = []
@@ -88,144 +82,168 @@ productList.push({
     price: 120,
     image: 'https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, culpa amet. Autem, numquam maxime? Qui neque aliquam, sequi minima similique iure odio, ipsam commodi sint, est recusandae rerum. Nisi, molestiae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, culpa amet. Autem, numquam maxime? Qui neque aliquam, sequi minima similique iure odio, ipsam commodi sint, est recusandae rerum. Nisi, molestiae.',
+    category: 'Little Kitty'
 })
 productList.push({
-    name: 'Ojón',
+    name: 'Gato Ojón',
     price: 320,
     image: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 2   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita voluptatum necessitatibus optio consequatur non, libero magnam accusamus illum reprehenderit alias nihil aperiam ratione facilis voluptas ipsa? Maiores nisi blanditiis dolorum.',
+    category: 'Funny Kittys'
 })
 productList.push({
-    name: 'Patitas',
+    name: 'Gato Patitas',
     price: 420,
     image: 'https://images.pexels.com/photos/1398185/pexels-photo-1398185.jpeg',
     description: 'Kitty 3   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
-    name: 'Ojotes',
+    name: 'Gato Ojotes',
     price: 620,
     image: 'https://images.pexels.com/photos/1835008/pexels-photo-1835008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 4   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Little Kitty'
 })
 productList.push({
-    name: 'Menso',
+    name: 'Gato Menso',
     price: 720,
     image: 'https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 5   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Funny Kittys'
 })
 productList.push({
-    name: 'Cat Noir',
+    name: 'Gato Cat Noir',
     price: 820,
     image: 'https://images.pexels.com/photos/1447884/pexels-photo-1447884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 6   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Little Kitty'
 })
 productList.push({
-    name: 'Cheto',
+    name: 'El Cheto',
     price: 920,
     image: 'https://images.pexels.com/photos/11399435/pexels-photo-11399435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 7   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
-    name: 'Cheto Enojado',
+    name: 'El Cheto Enojado',
     price: 1020,
     image: 'https://images.pexels.com/photos/5270660/pexels-photo-5270660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    description: 'Kitty 8   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.'
+    description: 'Kitty 8   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Funny Kittys'
 })
 productList.push({
     name: 'Gato Sparrow',
     price: 1020,
     image: 'https://static.wixstatic.com/media/1a82fe_5c1659e17fb54610bd19326750191a0f~mv2_d_3984_2656_s_4_2.jpg/v1/fill/w_480,h_322,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1a82fe_5c1659e17fb54610bd19326750191a0f~mv2_d_3984_2656_s_4_2.jpg',
     description: 'Kitty 9   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Kittys in Custom'
 })
 productList.push({
     name: 'Gatita Reina',
     price: 2020,
     image: 'https://images.pexels.com/photos/1314550/pexels-photo-1314550.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 10   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Kittys in Custom'
 })
 productList.push({
     name: 'Gato Loco',
     price: 3020,
     image: 'https://images.pexels.com/photos/1112621/pexels-photo-1112621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 11   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Funny Kittys'
 })
 productList.push({
     name: 'Gato Esponjoso',
     price: 4020,
     image: 'https://images.pexels.com/photos/12344999/pexels-photo-12344999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 12   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
     name: 'Gato Mimiendo',
     price: 5020,
     image: 'https://images.pexels.com/photos/1560424/pexels-photo-1560424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 13   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
     name: 'Gato Baka',
     price: 6020,
     image: 'https://images.pexels.com/photos/3155894/pexels-photo-3155894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 14   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Kittys in Custom'
 })
 productList.push({
     name: 'Gato Estudihambre',
     price: 7020,
     image: 'https://images.pexels.com/photos/1852914/pexels-photo-1852914.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 15   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
     name: 'Gato Cono de la Verguenza',
     price: 8020,
     image: 'https://images.pexels.com/photos/776374/pexels-photo-776374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 16  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Kittys in Custom'
 })
 productList.push({
     name: 'El Toto',
     price: 10020,
     image: 'https://images.pexels.com/photos/691583/pexels-photo-691583.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 17  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Little Kitty'
 })
 productList.push({
     name: 'El Nachito',
     price: 11020,
     image: 'https://images.pexels.com/photos/1381112/pexels-photo-1381112.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 18  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
     name: 'El Sushi',
     price: 12020,
     image: 'https://images.pexels.com/photos/1441586/pexels-photo-1441586.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 19  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
     name: 'El Zafiro',
     price: 13020,
     image: 'https://images.pexels.com/photos/1262943/pexels-photo-1262943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 20  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
     name: 'El Tilin',
     price: 14020,
     image: 'https://images.pexels.com/photos/13178239/pexels-photo-13178239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 21  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
     name: 'El Panda',
     price: 15020,
     image: 'https://images.pexels.com/photos/13027589/pexels-photo-13027589.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 22  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 productList.push({
     name: 'El Polvorón',
     price: 16020,
     image: 'https://images.pexels.com/photos/9845135/pexels-photo-9845135.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 23  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Little Kitty'
 })
 productList.push({
     name: 'El Salsa',
     price: 17020,
     image: 'https://images.pexels.com/photos/5263698/pexels-photo-5263698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 24  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
+    category: 'Big Kitty'
 })
 
 function renderProducts(arr) {//Muestra los productos 
@@ -301,23 +319,37 @@ function openProductDetail(product) {
 }
 
 function renderProductsCart(product) {//Productos en carrito
-    const cartHTML =
-        `
-        <div class="my-order-content">
-        <div class="shopping-cart">
-        <figure>
-        <img src="${product.image}">
-        </figure>
-        <p>${product.name}</p>
-        <p>$${product.price}</p>
-        <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
-        </div>
-        </div>
-        `
-    const shoopingCartContainer = document.querySelector('.cart-detail-order')
-    shoopingCartContainer.innerHTML += cartHTML
-    
     shoppingCart.push(product)
+
+
+    let duplicated = 1;
+    for (let i = 0; i < shoppingCart.length; i++) {
+        if (shoppingCart[i - 1] !== shoppingCart[i] || i == 0) {
+            const cartHTML =
+            `
+            <div class="my-order-content">
+            <div class="shopping-cart">
+            <figure>
+            <img src="${product.image}">
+            </figure>
+            <p id ="productDuplicated" >${product.name}</p>
+            <p>$${product.price}</p>
+            <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
+            </div>
+            </div>
+            `
+            const shoopingCartContainer = document.querySelector('.cart-detail-order')
+            shoopingCartContainer.innerHTML += cartHTML
+            
+        }else {
+            const duplicatedProduct = document.querySelector('#productDuplicated')
+            console.log('Producto duplicado!  ')
+            duplicated++
+            duplicatedProduct.innerText = product.name + ' x ' + duplicated
+
+        }
+    }
+
     productPriceCart(shoppingCart)
 }
 
@@ -333,4 +365,13 @@ function productPriceCart(shoopingcart) {
     porductItemsCount.innerText = shoopingcart.length
 
 }
+bigKittysButton(productList)
+function bigKittysButton (productList){
+    const arr = Object.values(productList)
+    const findBigKittys = arr.find(function(arr){
+        return arr.category === 'Big Kitty'
+    })
+    console.log('Funcion de búsqueda ' + findBigKittys)
+}
+
 

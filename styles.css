@@ -464,21 +464,17 @@ footer{
     background-color: plum;
 }
 
-
-.footer-right{
+.footer-left, .footer-left{
     width: 50%;
 
 }
-.footer-left{
-    width: 50%;
 
-}
-.footer-right ul {
+.redes-sociales{
     display: flex;
     list-style: none;
     padding-left: 20px;
+    justify-content: space-between;
 }
-
 
 /*---------------------------------------media querys-------------------------*/
 @media (max-width: 741px) {
