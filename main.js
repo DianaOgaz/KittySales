@@ -9,6 +9,7 @@ const closecloseProductInCart = document.querySelector('.closeProductInCart')
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
 const porductItemsCount = document.querySelector('#itemsCount')
 const bigKittys = document.querySelector('#big-kittys')
+const littleKittys = document.querySelector('#little-kittys')
 
 let shoppingCart = []
 
@@ -25,6 +26,11 @@ shoopingicon.addEventListener('click', toogleProductDetail)
 bigKittys.addEventListener('click', function(event){
     event.preventDefault();
     bigKittysButton();
+})
+
+littleKittys.addEventListener('click', function(event){
+    event.preventDefault();
+    littleKittysButton();
 })
 
 //funcion para que detecte click y se inactive o active el menu
@@ -254,6 +260,7 @@ productList.push({
 function renderProducts(arr) {//Muestra los productos 
     //se crea una funcion con el arreglo de productos 
     const cardsContainer = document.querySelector('.cards-container')
+    cardsContainer.innerHTML = ''
     for (product of arr) {
 
         const cardHTML =
@@ -382,11 +389,15 @@ function bigKittysButton() {
 
 console.log(filtro)
 
+
 /*
 const bigKittys = document.querySelector('#big-kittys')
-bigKittys.addEventListener('click', bigKittysButton)
+bigKittys.addEventListener('click', function(event){
+    event.preventDefault();
+    bigKittysButton();
+})
 
-function renderProducts(arr) {//Muestra los productos 
+function renderProducts(arr) {//Muestra los productos littleKittysButton
     //se crea una funcion con el arreglo de productos 
     const cardsContainer = document.querySelector('.cards-container')
     for (product of arr) {
@@ -394,7 +405,7 @@ function renderProducts(arr) {//Muestra los productos
         const cardHTML =
             `
         <div class="product-card">
-        <img src="${product.image}">
+        <img src="${product.image}">littleKittysButton
         <div class="product-info-cart">
         <div>
         <p>$${product.price}</p>
@@ -431,6 +442,6 @@ function bigKittysButton() {
     renderProducts(filtro)
 
 }
-//aparecen los productos por un segundo y despues desaparecen 
+//ahora al hacer click varias veces en el botón, se repiten los porductos 
 
 */
