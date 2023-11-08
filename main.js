@@ -20,7 +20,12 @@ let shoppingCart = []
 navEmail.addEventListener('click', toggleDesktopMenu)//evento del email clickeable llama a funcion
 burgerMenu.addEventListener('click', toggleMovileMenu)
 shoopingicon.addEventListener('click', toogleProductDetail)
-bigKittys.addEventListener('click', bigKittysButton)
+
+
+bigKittys.addEventListener('click', function(event){
+    event.preventDefault();
+    bigKittysButton();
+})
 
 //funcion para que detecte click y se inactive o active el menu
 function toggleDesktopMenu() {
@@ -273,7 +278,7 @@ function renderProducts(arr) {//Muestra los productos
 
     }
     const productDetailSelector = document.querySelectorAll('.product-card')
-    console.log(productDetailSelector)
+    //console.log(productDetailSelector)
 
     for (let i = 0; i < productDetailSelector.length; i++) { //Se crea un for que otere todos los elementos del arreglo, en este caso .product-card
         productDetailSelector[i].addEventListener('click', function () { //se añade el event listener por cada elemento
@@ -282,7 +287,7 @@ function renderProducts(arr) {//Muestra los productos
     }
 
 }//fin
-renderProducts(productList);
+//renderProducts(productList);
 
 
 function openProductDetail(product) {
@@ -318,40 +323,38 @@ function openProductDetail(product) {
 
 }
 
+var duplicated = 1;
 function renderProductsCart(product) {//Productos en carrito
     const arr = Object.values(product)
-    
-    let duplicated = 1;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] !== arr[i - 1] || i == 0) {
-            console.log('entró al if') //no entra al if
-            const cartHTML =
-            `
-            <div class="my-order-content">
-            <div class="shopping-cart">
-            <figure>
-            <img src="${product.image}">
-            </figure>
-            <p class ="productName" >${product.name}</p>
-            <p>$${product.price}</p>
-            <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
-            </div>
-            </div>
-            `
-            const shoopingCartContainer = document.querySelector('.cart-detail-order')
-            shoopingCartContainer.innerHTML += cartHTML
-            shoppingCart.push(product[i])
-            
-        }else {
-            const duplicatedProduct = document.querySelector('.productName')
-            console.log('Producto duplicado!  ')
-            duplicated++
-            duplicatedProduct.innerText = product.name + ' x ' + duplicated
+    const ifProductExist = arr.find(item => item.name === arr.name)
+    const cartHTML =
+        `
+    <div class="my-order-content">
+    <div class="shopping-cart">
+    <figure>
+    <img src="${product.image}">
+    </figure>
+    <p class ="productName" >${product.name}</p>
+    <p>$${product.price}</p>
+    <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
+    </div>
+    </div>
+    `
+    const shoopingCartContainer = document.querySelector('.cart-detail-order')
+    shoopingCartContainer.innerHTML += cartHTML
+    shoppingCart.push(product)
 
-        }
+    console.log(arr)
+    if (ifProductExist) {
+        const duplicatedProduct = document.querySelector(`.productName`)
+        duplicated++
+        duplicatedProduct.innerText = product.name + ' x ' + duplicated
+    } else {
+
     }
 
     productPriceCart(shoppingCart)
+
 }
 
 function productPriceCart(shoopingcart) {
@@ -366,13 +369,68 @@ function productPriceCart(shoopingcart) {
     porductItemsCount.innerText = shoopingcart.length
 
 }
-function bigKittysButton (productList){
-    const arr = Object.values(productList) 
-    const findBigKittys = arr.filter(function(arr){
-        return arr.category === 'Big Kitty'
-    })
-    console.log('Funcion de búsqueda ', findBigKittys) 
-    renderProducts([findBigKittys])
+
+
+const filtro = productList.filter(function (productList) {
+    return productList.category == 'Big Kitty'
+
+})
+function bigKittysButton() {
+    renderProducts(filtro)
+
 }
 
+console.log(filtro)
 
+/*
+const bigKittys = document.querySelector('#big-kittys')
+bigKittys.addEventListener('click', bigKittysButton)
+
+function renderProducts(arr) {//Muestra los productos 
+    //se crea una funcion con el arreglo de productos 
+    const cardsContainer = document.querySelector('.cards-container')
+    for (product of arr) {
+
+        const cardHTML =
+            `
+        <div class="product-card">
+        <img src="${product.image}">
+        <div class="product-info-cart">
+        <div>
+        <p>$${product.price}</p>
+        <p>${product.name}</p>
+        </div>
+        <figure>
+        <div style="width: 50px;height: 50px;">
+        <img src="./logos/kittyPaw.webp" style="width:100%; height:85%;">
+        
+        </div>
+        </figure>
+        </div>
+        </div>
+        `
+        cardsContainer.innerHTML += cardHTML;
+
+    }
+    const productDetailSelector = document.querySelectorAll('.product-card')
+    //console.log(productDetailSelector)
+
+    for (let i = 0; i < productDetailSelector.length; i++) { //Se crea un for que otere todos los elementos del arreglo, en este caso .product-card
+        productDetailSelector[i].addEventListener('click', function () { //se añade el event listener por cada elemento
+            openProductDetail(arr[i]);//se abre el elemento seleccionado :I No se porqué no se me ocurrió 
+        });
+    }
+
+}//fin
+
+const filtro = productList.filter(function (productList) {
+    return productList.category == 'Big Kitty'
+
+})
+function bigKittysButton() {
+    renderProducts(filtro)
+
+}
+//aparecen los productos por un segundo y despues desaparecen 
+
+*/

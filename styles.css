@@ -500,7 +500,7 @@ footer{
     .product-detail {
         left: 45%;
         transform: translate(-50%, -50%); /*mantiene el elemento centrado horizontalmente y verticalmente */
-        top: 60%
+       
     }
 
     /*productos*/
@@ -544,6 +544,7 @@ footer{
         display: none;
     }
     .product-detail{
+        position: fixed;
         top: 60%
     }
 }
