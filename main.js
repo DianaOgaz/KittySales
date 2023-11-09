@@ -8,10 +8,16 @@ const productDetailContainer = document.querySelector('.product-detail')//Detall
 const closecloseProductInCart = document.querySelector('.closeProductInCart')
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
 const porductItemsCount = document.querySelector('#itemsCount')
+
+//Botones de búsqueda 
 const bigKittys = document.querySelector('#big-kittys')
-const littleKittys = document.querySelector('#little-kittys')
+const allKittys = document.querySelector('#all-kittys')
+const littleKitty = document.querySelector('#little-kittys')
+const funnyKitty = document.querySelector('#funny-kittys')
+const kittyInCustom = document.querySelector('#kittys-in-custom')
 
 let shoppingCart = []
+let iSearch = ''
 
 
 
@@ -19,18 +25,40 @@ let shoppingCart = []
 //click es un evento de escucha, es una palabra reservada para este metodo
 
 navEmail.addEventListener('click', toggleDesktopMenu)//evento del email clickeable llama a funcion
-burgerMenu.addEventListener('click', toggleMovileMenu)
-shoopingicon.addEventListener('click', toogleProductDetail)
+burgerMenu.addEventListener('click', toggleMovileMenu)// abré el menu hamburguesa en la version movil
+shoopingicon.addEventListener('click', toogleProductDetail)//Abre carrito de compras
 
 
-bigKittys.addEventListener('click', function(event){
+bigKittys.addEventListener('click', function (event) { //marca que bigkittys is null
     event.preventDefault();
-    bigKittysButton();
+    iSearch = 'Big Kitty'
+    search(iSearch)
+
 })
 
-littleKittys.addEventListener('click', function(event){
+littleKitty.addEventListener('click', function (event) {
     event.preventDefault();
-    littleKittysButton();
+    iSearch = 'Little Kitty'
+    search(iSearch)
+})
+funnyKitty.addEventListener('click', function (event) {
+    event.preventDefault();
+    iSearch = 'Funny Kitty'
+    search(iSearch)
+})
+kittyInCustom.addEventListener('click', function (event) {
+    event.preventDefault();
+    iSearch = 'Kitty in Custom'
+    search(iSearch)
+})
+kittyInCustom.addEventListener('click', function (event) {
+    event.preventDefault();
+    iSearch = 'Kitty in Custom'
+    search(iSearch)
+})
+allKittys.addEventListener('click', function (event) {
+    event.preventDefault();
+    renderProducts(productList)
 })
 
 //funcion para que detecte click y se inactive o active el menu
@@ -100,7 +128,7 @@ productList.push({
     price: 320,
     image: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 2   Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita voluptatum necessitatibus optio consequatur non, libero magnam accusamus illum reprehenderit alias nihil aperiam ratione facilis voluptas ipsa? Maiores nisi blanditiis dolorum.',
-    category: 'Funny Kittys'
+    category: 'Funny Kitty'
 })
 productList.push({
     name: 'Gato Patitas',
@@ -121,7 +149,7 @@ productList.push({
     price: 720,
     image: 'https://images.pexels.com/photos/248280/pexels-photo-248280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 5   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
-    category: 'Funny Kittys'
+    category: 'Funny Kitty'
 })
 productList.push({
     name: 'Gato Cat Noir',
@@ -142,28 +170,28 @@ productList.push({
     price: 1020,
     image: 'https://images.pexels.com/photos/5270660/pexels-photo-5270660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 8   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
-    category: 'Funny Kittys'
+    category: 'Funny Kitty'
 })
 productList.push({
     name: 'Gato Sparrow',
     price: 1020,
     image: 'https://static.wixstatic.com/media/1a82fe_5c1659e17fb54610bd19326750191a0f~mv2_d_3984_2656_s_4_2.jpg/v1/fill/w_480,h_322,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1a82fe_5c1659e17fb54610bd19326750191a0f~mv2_d_3984_2656_s_4_2.jpg',
     description: 'Kitty 9   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
-    category: 'Kittys in Custom'
+    category: 'Kitty in Custom'
 })
 productList.push({
     name: 'Gatita Reina',
     price: 2020,
     image: 'https://images.pexels.com/photos/1314550/pexels-photo-1314550.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 10   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
-    category: 'Kittys in Custom'
+    category: 'Kitty in Custom'
 })
 productList.push({
     name: 'Gato Loco',
     price: 3020,
     image: 'https://images.pexels.com/photos/1112621/pexels-photo-1112621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 11   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
-    category: 'Funny Kittys'
+    category: 'Funny Kitty'
 })
 productList.push({
     name: 'Gato Esponjoso',
@@ -184,7 +212,7 @@ productList.push({
     price: 6020,
     image: 'https://images.pexels.com/photos/3155894/pexels-photo-3155894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 14   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
-    category: 'Kittys in Custom'
+    category: 'Kitty in Custom'
 })
 productList.push({
     name: 'Gato Estudihambre',
@@ -198,7 +226,7 @@ productList.push({
     price: 8020,
     image: 'https://images.pexels.com/photos/776374/pexels-photo-776374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     description: 'Kitty 16  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel excepturi qui, nisi incidunt, temporibus aliquid ipsum dicta fuga cumque atque eaque facere magni est mollitia delectus ut, porro ea commodi.',
-    category: 'Kittys in Custom'
+    category: 'Kitty in Custom'
 })
 productList.push({
     name: 'El Toto',
@@ -261,7 +289,7 @@ function renderProducts(arr) {//Muestra los productos
     //se crea una funcion con el arreglo de productos 
     const cardsContainer = document.querySelector('.cards-container')
     cardsContainer.innerHTML = ''
-    for (product of arr) {
+    for (product of arr) { //Recorre todos los productos del arreglo creando la vista para cada uno
 
         const cardHTML =
             `
@@ -377,71 +405,9 @@ function productPriceCart(shoopingcart) {
 
 }
 
-
-const filtro = productList.filter(function (productList) {
-    return productList.category == 'Big Kitty'
-
-})
-function bigKittysButton() {
+function search(iSearch) { //Funcion para realizar la busqueda dentro de los botones del menú 
+    const filtro = productList.filter(function (productList) {
+        return productList.category === iSearch
+    })
     renderProducts(filtro)
-
 }
-
-console.log(filtro)
-
-
-/*
-const bigKittys = document.querySelector('#big-kittys')
-bigKittys.addEventListener('click', function(event){
-    event.preventDefault();
-    bigKittysButton();
-})
-
-function renderProducts(arr) {//Muestra los productos littleKittysButton
-    //se crea una funcion con el arreglo de productos 
-    const cardsContainer = document.querySelector('.cards-container')
-    for (product of arr) {
-
-        const cardHTML =
-            `
-        <div class="product-card">
-        <img src="${product.image}">littleKittysButton
-        <div class="product-info-cart">
-        <div>
-        <p>$${product.price}</p>
-        <p>${product.name}</p>
-        </div>
-        <figure>
-        <div style="width: 50px;height: 50px;">
-        <img src="./logos/kittyPaw.webp" style="width:100%; height:85%;">
-        
-        </div>
-        </figure>
-        </div>
-        </div>
-        `
-        cardsContainer.innerHTML += cardHTML;
-
-    }
-    const productDetailSelector = document.querySelectorAll('.product-card')
-    //console.log(productDetailSelector)
-
-    for (let i = 0; i < productDetailSelector.length; i++) { //Se crea un for que otere todos los elementos del arreglo, en este caso .product-card
-        productDetailSelector[i].addEventListener('click', function () { //se añade el event listener por cada elemento
-            openProductDetail(arr[i]);//se abre el elemento seleccionado :I No se porqué no se me ocurrió 
-        });
-    }
-
-}//fin
-
-const filtro = productList.filter(function (productList) {
-    return productList.category == 'Big Kitty'
-
-})
-function bigKittysButton() {
-    renderProducts(filtro)
-
-}
-//ahora al hacer click varias veces en el botón, se repiten los porductos 
-
-*/
