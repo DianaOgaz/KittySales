@@ -5,7 +5,6 @@ const sideMenuMovil = document.querySelector('.mobile-menu')//Menu desplegabla m
 const shoopingicon = document.querySelector('.navbar-shopping-cart') //shoopingcart icon
 const productDetail = document.querySelector('.cart-detail')//carrito de compras
 const productDetailContainer = document.querySelector('.product-detail')//Detalle de productos
-const closecloseProductInCart = document.querySelector('.closeProductInCart')
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
 const porductItemsCount = document.querySelector('#itemsCount')
 
@@ -28,14 +27,12 @@ navEmail.addEventListener('click', toggleDesktopMenu)//evento del email clickeab
 burgerMenu.addEventListener('click', toggleMovileMenu)// abré el menu hamburguesa en la version movil
 shoopingicon.addEventListener('click', toogleProductDetail)//Abre carrito de compras
 
-
-bigKittys.addEventListener('click', function (event) { //marca que bigkittys is null
+//Botones filtro 
+bigKittys.addEventListener('click', function (event) { 
     event.preventDefault();
     iSearch = 'Big Kitty'
     search(iSearch)
-
 })
-
 littleKitty.addEventListener('click', function (event) {
     event.preventDefault();
     iSearch = 'Little Kitty'
@@ -322,7 +319,7 @@ function renderProducts(arr) {//Muestra los productos
     }
 
 }//fin
-//renderProducts(productList);
+renderProducts(productList);
 
 
 function openProductDetail(product) {
@@ -375,6 +372,10 @@ function renderProductsCart(product) {//Productos en carrito
     </div>
     </div>
     `
+    const closeProductInCart = document.querySelector('#closeProductInCart')
+
+
+
     const shoopingCartContainer = document.querySelector('.cart-detail-order')
     shoopingCartContainer.innerHTML += cartHTML
     shoppingCart.push(product)
