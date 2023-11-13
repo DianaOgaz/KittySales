@@ -243,6 +243,14 @@ nav{
     font-weight: bold;
 }
 
+.empty-cart{
+    text-align: center;
+    margin-top: 24px;
+}
+.empty-cart img{
+    border-radius: 20px;
+}
+
 .order {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -328,7 +336,7 @@ height: 50px;
     grid-template-columns: repeat(auto-fill, 240px);
     gap: 45px;
     place-content: center;
-    margin-bottom: 250px;
+    margin-bottom: 24px;
 
 }
 
@@ -465,14 +473,15 @@ height: 50px;
 
 
 footer{
-    position: fixed;
+    position: inherit;
     width: 100%;
     justify-content: space-evenly;
     background-color: plum;
     padding: 20px;
-    margin-top: 50px;
     bottom: 0;
 }
+
+
 
 .footer-left, .footer-left{
     display: flex;

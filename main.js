@@ -7,6 +7,7 @@ const productDetail = document.querySelector('.cart-detail')//carrito de compras
 const productDetailContainer = document.querySelector('.product-detail')//Detalle de productos
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
 const porductItemsCount = document.querySelector('#itemsCount')
+const footer = document.querySelector('footer')
 
 //Botones de búsqueda 
 const bigKittys = document.querySelector('#big-kittys')
@@ -282,6 +283,8 @@ productList.push({
     category: 'Big Kitty'
 })
 
+
+
 function renderProducts(arr) {//Muestra los productos 
     //se crea una funcion con el arreglo de productos 
     const cardsContainer = document.querySelector('.cards-container')
@@ -408,7 +411,10 @@ function productPriceCart(shoopingcart) {
 
 function search(iSearch) { //Funcion para realizar la busqueda dentro de los botones del menú 
     const filtro = productList.filter(function (productList) {
-        return productList.category === iSearch
-    })
-    renderProducts(filtro)
+    return productList.category === iSearch
+})
+renderProducts(filtro)
+if (filtro.length < 12){ //Acomoda el footer según la cantidad de articulos mostrados en la vista 
+    footer.style.position = 'fixed'
+}else if (filtro.length > 12)footer.style.position = 'inherit'
 }
