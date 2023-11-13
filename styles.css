@@ -315,7 +315,12 @@ height: 50px;
 
 /*----------------------------Productos-------------------------------*/
 
+.main-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 
+}
 
 .cards-container {
     display: grid;
@@ -323,6 +328,7 @@ height: 50px;
     grid-template-columns: repeat(auto-fill, 240px);
     gap: 45px;
     place-content: center;
+    margin-bottom: 250px;
 
 }
 
@@ -456,17 +462,20 @@ height: 50px;
     justify-content: space-evenly;
 }
 
+
+
 footer{
-    display: flex;
+    position: fixed;
+    width: 100%;
     justify-content: space-evenly;
     background-color: plum;
     padding: 20px;
     margin-top: 50px;
-    top: 25px;
-    flex-grow: 1;
+    bottom: 0;
 }
 
 .footer-left, .footer-left{
+    display: flex;
     width: 50%;
 }
 

@@ -28,7 +28,7 @@ burgerMenu.addEventListener('click', toggleMovileMenu)// abré el menu hamburgue
 shoopingicon.addEventListener('click', toogleProductDetail)//Abre carrito de compras
 
 //Botones filtro 
-bigKittys.addEventListener('click', function (event) { 
+bigKittys.addEventListener('click', function (event) {
     event.preventDefault();
     iSearch = 'Big Kitty'
     search(iSearch)
@@ -305,12 +305,12 @@ function renderProducts(arr) {//Muestra los productos
         </figure>
         </div>
         </div>
+    
         `
         cardsContainer.innerHTML += cardHTML;
 
     }
     const productDetailSelector = document.querySelectorAll('.product-card')
-    //console.log(productDetailSelector)
 
     for (let i = 0; i < productDetailSelector.length; i++) { //Se crea un for que otere todos los elementos del arreglo, en este caso .product-card
         productDetailSelector[i].addEventListener('click', function () { //se añade el event listener por cada elemento
