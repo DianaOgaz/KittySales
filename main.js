@@ -56,6 +56,7 @@ kittyInCustom.addEventListener('click', function (event) {
 })
 allKittys.addEventListener('click', function (event) {
     event.preventDefault();
+    footer.style.position = 'inherit'
     renderProducts(productList)
 })
 
@@ -363,7 +364,7 @@ function renderProductsCart(product) {//Productos en carrito
     const arr = Object.values(product)
     const ifProductExist = arr.find(item => item.name === arr.name)
     const cartHTML =
-        `
+    `
     <div class="my-order-content">
     <div class="shopping-cart">
     <figure>
@@ -375,15 +376,12 @@ function renderProductsCart(product) {//Productos en carrito
     </div>
     </div>
     `
-    const closeProductInCart = document.querySelector('#closeProductInCart')
-
-
-
     const shoopingCartContainer = document.querySelector('.cart-detail-order')
     shoopingCartContainer.innerHTML += cartHTML
     shoppingCart.push(product)
 
     console.log(arr)
+    console.log('--->' + ifProductExist)
     if (ifProductExist) {
         const duplicatedProduct = document.querySelector(`.productName`)
         duplicated++
@@ -411,10 +409,11 @@ function productPriceCart(shoopingcart) {
 
 function search(iSearch) { //Funcion para realizar la busqueda dentro de los botones del menú 
     const filtro = productList.filter(function (productList) {
-    return productList.category === iSearch
-})
-renderProducts(filtro)
-if (filtro.length < 12){ //Acomoda el footer según la cantidad de articulos mostrados en la vista 
-    footer.style.position = 'fixed'
-}else if (filtro.length > 12)footer.style.position = 'inherit'
+        return productList.category === iSearch
+    })
+    renderProducts(filtro)
+    if (filtro.length < 12) { //Acomoda el footer según la cantidad de articulos mostrados en la vista 
+        footer.style.position = 'fixed'
+        console.log(filtro.length)
+    }
 }

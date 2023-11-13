@@ -477,10 +477,13 @@ footer{
     width: 100%;
     justify-content: space-evenly;
     background-color: plum;
-    padding: 20px;
     bottom: 0;
 }
-
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 26px;
+}
 
 
 .footer-left, .footer-left{
