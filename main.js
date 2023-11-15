@@ -363,7 +363,7 @@ function openProductDetail(product) {
 var duplicated = 1;
 function renderProductsCart(product) {//Productos en carrito
     //const arr = Object.values(product)
-    emptyCart.classList.toggle('inactive')
+    emptyCart.classList.add('inactive')
 
     const ifProductExist = shoppingCart.find(item => item.name === product.name)
     console.log('ifProductExist' + ifProductExist)
