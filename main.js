@@ -11,6 +11,7 @@ const productDetailContainer = document.querySelector('.product-detail')//Detall
 const priceCartTotal = document.querySelector('#productCartPriceLabel')
 const porductItemsCount = document.querySelector('#itemsCount')
 const footer = document.querySelector('footer')
+const emptyCart = document.querySelector('.empty-cart')
 
 //Botones de búsqueda 
 const bigKittys = document.querySelector('#big-kittys')
@@ -362,6 +363,8 @@ function openProductDetail(product) {
 var duplicated = 1;
 function renderProductsCart(product) {//Productos en carrito
     //const arr = Object.values(product)
+    emptyCart.classList.toggle('inactive')
+
     const ifProductExist = shoppingCart.find(item => item.name === product.name)
     console.log('ifProductExist' + ifProductExist)
     if (ifProductExist) {
