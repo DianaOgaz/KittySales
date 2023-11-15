@@ -379,7 +379,7 @@ function renderProductsCart(product) {//Productos en carrito
 
 function addCartItem(product) {//Agrega productos no duplicados
     const cartHTML =
-        `
+`
 <div class="my-order-content">
 <div class="shopping-cart">
 <figure>
@@ -391,13 +391,26 @@ function addCartItem(product) {//Agrega productos no duplicados
 </div>
 </div>
 `
-    const shoopingCartContainer = document.querySelector('.cart-detail-order')
-    shoopingCartContainer.innerHTML += cartHTML
+const shoopingCartContainer = document.querySelector('.cart-detail-order')
+shoopingCartContainer.innerHTML += cartHTML
+
+const deleteItem = document.querySelector('#closeProductInCart')
+deleteItem.addEventListener('click', deleteCartItem)
+
 }
 
 function updateCartItems(product) {//Actualiza el carrito cuando detecta productos duplicados
     const duplicatedProduct = document.querySelector(`.productName`)
     duplicatedProduct.innerText = product.name + ' x ' + duplicated
+}
+
+function deleteCartItem(){
+    const productCart = document.querySelector('.shopping-cart')
+    productCart.parentNode.removeChild(productCart)
+    const index = shoppingCart.indexOf(product); 
+    if(index !== -1){
+        shoppingCart.splice(index, 1)
+    }
 }
 
 function productPriceCart(shoopingcart) {
