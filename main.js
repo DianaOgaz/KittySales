@@ -1,3 +1,6 @@
+////@ts-check
+
+
 const navEmail = document.querySelector('.navbar-email') //Email clickeable 
 const desktopMenu = document.querySelector('.desktop-menu')//Menu desplegabla
 const burgerMenu = document.querySelector('.burgerMenu')//icono Burger
@@ -327,7 +330,6 @@ renderProducts(productList);
 
 
 function openProductDetail(product) {
-    console.log('click')//No se imprime, no entra a la funcion
     const productDetailHTML =
         `
     <div class="product-detail-close">
@@ -344,15 +346,13 @@ function openProductDetail(product) {
     </button>
     </div>
     `
-
     productDetailContainer.innerHTML = productDetailHTML;
     productDetailContainer.classList.remove('inactive')
 
     const closeProductD = document.querySelector('.product-detail-close')
     closeProductD.addEventListener('click', closeProductDetail)
-
-
     const addToCartButton = document.querySelector('#add-to-cart-button')
+    
     addToCartButton.addEventListener('click', function () {
         renderProductsCart(product)
     })
@@ -361,37 +361,40 @@ function openProductDetail(product) {
 
 var duplicated = 1;
 function renderProductsCart(product) {//Productos en carrito
-    const arr = Object.values(product)
-    const ifProductExist = arr.find(item => item.name === arr.name)
+    //const arr = Object.values(product)
+    const ifProductExist = shoppingCart.find(item => item.name === product.name)
+    console.log('ifProductExist' + ifProductExist)
+    if (ifProductExist) {
+        duplicated++
+        updateCartItems(product)
+    } else {
+        shoppingCart.push(product)
+        addCartItem(product)
+        productPriceCart(shoppingCart)
+    }
+}
+
+function addCartItem(product) {//Agrega productos no duplicados
     const cartHTML =
-    `
-    <div class="my-order-content">
-    <div class="shopping-cart">
-    <figure>
-    <img src="${product.image}">
-    </figure>
-    <p class ="productName" >${product.name}</p>
-    <p>$${product.price}</p>
-    <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
-    </div>
-    </div>
-    `
+        `
+<div class="my-order-content">
+<div class="shopping-cart">
+<figure>
+<img src="${product.image}">
+</figure>
+<p class ="productName" >${product.name}</p>
+<p>$${product.price}</p>
+<img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
+</div>
+</div>
+`
     const shoopingCartContainer = document.querySelector('.cart-detail-order')
     shoopingCartContainer.innerHTML += cartHTML
-    shoppingCart.push(product)
+}
 
-    console.log(arr)
-    console.log('--->' + ifProductExist)
-    if (ifProductExist) {
-        const duplicatedProduct = document.querySelector(`.productName`)
-        duplicated++
-        duplicatedProduct.innerText = product.name + ' x ' + duplicated
-    } else {
-
-    }
-
-    productPriceCart(shoppingCart)
-
+function updateCartItems(product) {//Actualiza el carrito cuando detecta productos duplicados
+    const duplicatedProduct = document.querySelector(`.productName`)
+    duplicatedProduct.innerText = product.name + ' x ' + duplicated
 }
 
 function productPriceCart(shoopingcart) {
@@ -401,7 +404,6 @@ function productPriceCart(shoopingcart) {
         total += shoopingcart[i].price
     }
 
-    const priceCartTotal = document.querySelector('#productCartPriceLabel')
     priceCartTotal.innerText = '$' + total;
     porductItemsCount.innerText = shoopingcart.length
 
