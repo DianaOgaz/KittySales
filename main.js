@@ -366,12 +366,13 @@ var duplicated = 1;
 function renderProductsCart(product) {//Productos en carrito
     emptyCart.classList.add('inactive')//Quita la imagen de carrito vacio
     totalProducts.unshift(product) //Añade el producto a un arreglo 
-    productPriceCart(totalProducts)//Se calcula el
+    productPriceCart(totalProducts)//Se calcula el precio
 
     const ifProductExist = shoppingCart.find(item => item.name === product.name) //busca productos duplicados
+    console.log('Repetido -> ' + JSON.stringify(ifProductExist))
     if (ifProductExist) {
         duplicated++
-        updateCartItems(product)
+        updateCartItems(product, duplicated)
     } else {
         duplicated = 1
         shoppingCart.push(product)
@@ -387,7 +388,8 @@ function addCartItem(product) {//Agrega productos no duplicados
 <figure>
 <img src="${product.image}">
 </figure>
-<p class ="productName" >${product.name}</p>
+<p class ="productName" >${product.name} </p>
+<p id="duplicateCount">0</p>
 <p>$${product.price}</p>
 <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
 </div>
@@ -397,7 +399,7 @@ function addCartItem(product) {//Agrega productos no duplicados
 
     const deleteItems = document.querySelectorAll('#closeProductInCart')
     //console.log('Producto' + JSON.stringify(product) + '  Cantidad ' + product.length)
-    console.log('deleteitems -> ' + deleteItems)
+    //console.log('deleteitems -> ' + deleteItems)
     deleteItems.forEach(deleteItem => {
         deleteItem.addEventListener('click', function () {
             const productIndex = Array.from(deleteItems).indexOf(deleteItem)
@@ -410,17 +412,25 @@ function addCartItem(product) {//Agrega productos no duplicados
     })
 }
 
-function updateCartItems(product) {//Actualiza el carrito cuando detecta productos duplicados
+function updateCartItems(product, duplicated) {//Actualiza el carrito cuando detecta productos duplicados
+    const duplicateText = document.querySelector('#duplicateCount');
+    console.log(product)
+    console.log('Duplicados -> ' + duplicated)
     const allProducts = document.querySelectorAll('.productName');
 
-    // Itera sobre los elementos y encuentra el que tiene un contenido diferente al nombre del producto
-    allProducts.forEach(function(element) {
-        // Verifica si el contenido del elemento es diferente al nombre del producto
-        if (element.innerText == product.name) {
-            // Actualiza el contenido del elemento seleccionado
-            element.innerText = product.name + ' x ' + duplicated;
+    allProducts.forEach(function (element) {
+        console.log('FOR => ' + element.innerText + '  ' + product.name)
+        if (element.innerText === product.name) {
+            const findProduct = shoppingCart.find(function(shoopingcart){
+                return shoopingcart.name === product.name
+            })
+            duplicateText.innerText = ' x ' + duplicated;
         }
     });
+
+
+    console.log('----->' + duplicateText.innerText)
+
 }
 
 function deleteCartItem(product) {
@@ -436,11 +446,11 @@ function deleteCartItem(product) {
 
 function productPriceCart(totalProducts) {
     let total = 0.00
-    totalProducts.forEach(function(totalProducts){
+    totalProducts.forEach(function (totalProducts) {
         total += totalProducts.price
     })
     //Añade el precio en el HTML
-    priceCartTotal.innerText = '$' + total;
+    priceCartTotal.innerText = '$' + total
     porductItemsCount.innerText = totalProducts.length
 }
 
