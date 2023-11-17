@@ -364,16 +364,16 @@ function openProductDetail(product) {
 
 var duplicated = 1;
 function renderProductsCart(product) {//Productos en carrito
-    //const arr = Object.values(product)
     emptyCart.classList.add('inactive')//Quita la imagen de carrito vacio
-    totalProducts.unshift(product)
-    productPriceCart(totalProducts)
+    totalProducts.unshift(product) //Añade el producto a un arreglo 
+    productPriceCart(totalProducts)//Se calcula el
 
     const ifProductExist = shoppingCart.find(item => item.name === product.name) //busca productos duplicados
     if (ifProductExist) {
         duplicated++
         updateCartItems(product)
     } else {
+        duplicated = 1
         shoppingCart.push(product)
         addCartItem(product)
     }
@@ -393,7 +393,6 @@ function addCartItem(product) {//Agrega productos no duplicados
 </div>
 </div>
 `
-
     shoopingCartContainer.innerHTML += cartHTML
 
     const deleteItems = document.querySelectorAll('#closeProductInCart')
@@ -409,16 +408,19 @@ function addCartItem(product) {//Agrega productos no duplicados
             //console.log('deleteItem ' + JSON.stringify(clickedProduct))
         })
     })
-
-
-
 }
 
-
-
 function updateCartItems(product) {//Actualiza el carrito cuando detecta productos duplicados
-    const duplicatedProduct = document.querySelector(`.productName`)
-    duplicatedProduct.innerText = product.name + ' x ' + duplicated
+    const allProducts = document.querySelectorAll('.productName');
+
+    // Itera sobre los elementos y encuentra el que tiene un contenido diferente al nombre del producto
+    allProducts.forEach(function(element) {
+        // Verifica si el contenido del elemento es diferente al nombre del producto
+        if (element.innerText == product.name) {
+            // Actualiza el contenido del elemento seleccionado
+            element.innerText = product.name + ' x ' + duplicated;
+        }
+    });
 }
 
 function deleteCartItem(product) {
