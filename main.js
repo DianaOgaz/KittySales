@@ -12,6 +12,7 @@ const priceCartTotal = document.querySelector('#productCartPriceLabel')
 const porductItemsCount = document.querySelector('#itemsCount')
 const footer = document.querySelector('footer')
 const emptyCart = document.querySelector('.empty-cart')
+const shoopingCartContainer = document.querySelector('.cart-detail-order')
 
 //Botones de búsqueda 
 const bigKittys = document.querySelector('#big-kittys')
@@ -21,6 +22,7 @@ const funnyKitty = document.querySelector('#funny-kittys')
 const kittyInCustom = document.querySelector('#kittys-in-custom')
 
 let shoppingCart = []
+let totalProducts = []
 let iSearch = ''
 
 
@@ -347,13 +349,13 @@ function openProductDetail(product) {
     </button>
     </div>
     `
-    productDetailContainer.innerHTML = productDetailHTML;
-    productDetailContainer.classList.remove('inactive')
+    productDetailContainer.innerHTML = productDetailHTML; //Modificamos el HTML 
+    productDetailContainer.classList.remove('inactive') // se muestra el producto en la pantalla
 
     const closeProductD = document.querySelector('.product-detail-close')
     closeProductD.addEventListener('click', closeProductDetail)
-    const addToCartButton = document.querySelector('#add-to-cart-button')
 
+    const addToCartButton = document.querySelector('#add-to-cart-button')
     addToCartButton.addEventListener('click', function () {
         renderProductsCart(product)
     })
@@ -364,16 +366,16 @@ var duplicated = 1;
 function renderProductsCart(product) {//Productos en carrito
     //const arr = Object.values(product)
     emptyCart.classList.add('inactive')//Quita la imagen de carrito vacio
+    totalProducts.unshift(product)
+    productPriceCart(totalProducts)
 
     const ifProductExist = shoppingCart.find(item => item.name === product.name) //busca productos duplicados
-    console.log('ifProductExist' + ifProductExist)
     if (ifProductExist) {
         duplicated++
         updateCartItems(product)
     } else {
         shoppingCart.push(product)
         addCartItem(product)
-        productPriceCart(shoppingCart)
     }
 }
 
@@ -391,20 +393,20 @@ function addCartItem(product) {//Agrega productos no duplicados
 </div>
 </div>
 `
-    const shoopingCartContainer = document.querySelector('.cart-detail-order')
+
     shoopingCartContainer.innerHTML += cartHTML
 
     const deleteItems = document.querySelectorAll('#closeProductInCart')
-    console.log('Producto' + JSON.stringify(product) + '  Cantidad ' + product.length)
+    //console.log('Producto' + JSON.stringify(product) + '  Cantidad ' + product.length)
     console.log('deleteitems -> ' + deleteItems)
     deleteItems.forEach(deleteItem => {
         deleteItem.addEventListener('click', function () {
             const productIndex = Array.from(deleteItems).indexOf(deleteItem)
             console.log('product Index -> ' + deleteItem)
             const clickedProduct = product[productIndex] /
-            console.log('Producto Clickeado -> ' + product.name)//aparece object object
+                console.log('Producto Clickeado -> ' + product.name)//aparece object object
             deleteCartItem(clickedProduct) //aparece undefined
-            console.log('deleteItem ' + JSON.stringify(clickedProduct))
+            //console.log('deleteItem ' + JSON.stringify(clickedProduct))
         })
     })
 
@@ -430,16 +432,14 @@ function deleteCartItem(product) {
     }
 }
 
-function productPriceCart(shoopingcart) {
-    let total = 0.00;
-
-    for (let i = 0; i < shoopingcart.length; i++) {
-        total += shoopingcart[i].price
-    }
-
+function productPriceCart(totalProducts) {
+    let total = 0.00
+    totalProducts.forEach(function(totalProducts){
+        total += totalProducts.price
+    })
+    //Añade el precio en el HTML
     priceCartTotal.innerText = '$' + total;
-    porductItemsCount.innerText = shoopingcart.length
-
+    porductItemsCount.innerText = totalProducts.length
 }
 
 function search(iSearch) { //Funcion para realizar la busqueda dentro de los botones del menú 
