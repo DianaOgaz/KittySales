@@ -355,30 +355,30 @@ function openProductDetail(product) {
 
     const addToCartButton = document.querySelector('#add-to-cart-button')
     addToCartButton.addEventListener('click', function () {
-        renderProductsCart(product)
+        isDuplicate(product)
     })
 
 }
 
 var duplicated = 1;
-function renderProductsCart(product) {//Productos en carrito
+function isDuplicate(product) {//Productos en carrito
     emptyCart.classList.add('inactive')//Quita la imagen de carrito vacio
-    totalProducts.unshift(product) //Añade el producto a un arreglo 
     productPriceCart(totalProducts)//Se calcula el precio
+    totalProducts.unshift(product) //Añade el producto a un arreglo 
+    const productosUnicos = new Set();
 
-    const ifProductExist = totalProducts.find((element) => element == product.name) //busca productos duplicados
-    console.log('Repetido -> ' + JSON.stringify(totalProducts))
-    if (ifProductExist) {
-        duplicated++
-        updateCartItems(product, duplicated)
-        console.log('IF 1 Duplicados -> ' + duplicated)
-
-    } else {
-        duplicated = 1
-        shoppingCart.push(product)
-        addCartItem(product)
-        console.log('IF 2 Duplicados -> ' + duplicated)
+    for (const elemento of totalProducts){
+        if (productosUnicos.has(elemento)){
+            shoppingCart.push(elemento)
+            console.log('Repetido')
+        }else{
+            productosUnicos.add(elemento)
+            console.log('No Repetido')
+        }
     }
+console.log("Unicos -> " + JSON.stringify(productosUnicos) )
+console.log("Total -> " + shoppingCart.length)
+
 }
 
 function addCartItem(product) {//Agrega productos no duplicados
