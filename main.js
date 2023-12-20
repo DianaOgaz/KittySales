@@ -1,6 +1,5 @@
 ////@ts-check
 
-
 const navEmail = document.querySelector('.navbar-email') //Email clickeable 
 const desktopMenu = document.querySelector('.desktop-menu')//Menu desplegabla
 const burgerMenu = document.querySelector('.burgerMenu')//icono Burger
@@ -8,22 +7,24 @@ const sideMenuMovil = document.querySelector('.mobile-menu')//Menu desplegabla m
 const shoopingicon = document.querySelector('.navbar-shopping-cart') //shoopingcart icon
 const productDetail = document.querySelector('.cart-detail')//carrito de compras
 const productDetailContainer = document.querySelector('.product-detail')//Detalle de productos
-const priceCartTotal = document.querySelector('#productCartPriceLabel')
-const porductItemsCount = document.querySelector('#itemsCount')
-const footer = document.querySelector('footer')
-const emptyCart = document.querySelector('.empty-cart')
-const shoopingCartContainer = document.querySelector('.cart-detail-order')
+const priceCartTotal = document.querySelector('#productCartPriceLabel')//precio del producto 
+const porductItemsCount = document.querySelector('#itemsCount')//contador de productos agregados al carrito
+const footer = document.querySelector('footer')//pie de página
+const emptyCart = document.querySelector('.empty-cart')//carrito vacio
+const shoopingCartContainer = document.querySelector('.cart-detail-order')//producto en carrito de compras
+const deleteItems = document.querySelectorAll('#closeProductInCart')//boton eliminar producto de carrito
 
-//Botones de búsqueda 
+//Menu > Botones de búsqueda 
 const bigKittys = document.querySelector('#big-kittys')
 const allKittys = document.querySelector('#all-kittys')
 const littleKitty = document.querySelector('#little-kittys')
 const funnyKitty = document.querySelector('#funny-kittys')
 const kittyInCustom = document.querySelector('#kittys-in-custom')
 
-let shoppingCart = []
-let totalProducts = []
-let iSearch = ''
+//Variables globales
+let shoppingCart = []//Arreglo para el carrito de compras
+let totalProducts = []//Arreglo para el total de los productos
+let iSearch = ''//Variable el método de busqueda y filtrado para las variables
 
 
 
@@ -290,8 +291,6 @@ productList.push({
     category: 'Big Kitty'
 })
 
-
-
 function renderProducts(arr) {//Muestra los productos 
     //se crea una funcion con el arreglo de productos 
     const cardsContainer = document.querySelector('.cards-container')
@@ -331,7 +330,6 @@ function renderProducts(arr) {//Muestra los productos
 }//fin
 renderProducts(productList);
 
-
 function openProductDetail(product) {
     const productDetailHTML =
         `
@@ -368,15 +366,18 @@ function renderProductsCart(product) {//Productos en carrito
     totalProducts.unshift(product) //Añade el producto a un arreglo 
     productPriceCart(totalProducts)//Se calcula el precio
 
-    const ifProductExist = shoppingCart.find(item => item.name === product.name) //busca productos duplicados
-    console.log('Repetido -> ' + JSON.stringify(ifProductExist))
+    const ifProductExist = totalProducts.find((element) => element == product.name) //busca productos duplicados
+    console.log('Repetido -> ' + JSON.stringify(totalProducts))
     if (ifProductExist) {
         duplicated++
         updateCartItems(product, duplicated)
+        console.log('IF 1 Duplicados -> ' + duplicated)
+
     } else {
         duplicated = 1
         shoppingCart.push(product)
         addCartItem(product)
+        console.log('IF 2 Duplicados -> ' + duplicated)
     }
 }
 
@@ -396,20 +397,6 @@ function addCartItem(product) {//Agrega productos no duplicados
 </div>
 `
     shoopingCartContainer.innerHTML += cartHTML
-
-    const deleteItems = document.querySelectorAll('#closeProductInCart')
-    //console.log('Producto' + JSON.stringify(product) + '  Cantidad ' + product.length)
-    //console.log('deleteitems -> ' + deleteItems)
-    deleteItems.forEach(deleteItem => {
-        deleteItem.addEventListener('click', function () {
-            const productIndex = Array.from(deleteItems).indexOf(deleteItem)
-            console.log('product Index -> ' + deleteItem)
-            const clickedProduct = product[productIndex] /
-                console.log('Producto Clickeado -> ' + product.name)//aparece object object
-            deleteCartItem(clickedProduct) //aparece undefined
-            //console.log('deleteItem ' + JSON.stringify(clickedProduct))
-        })
-    })
 }
 
 function updateCartItems(product, duplicated) {//Actualiza el carrito cuando detecta productos duplicados
@@ -421,7 +408,7 @@ function updateCartItems(product, duplicated) {//Actualiza el carrito cuando det
     allProducts.forEach(function (element) {
         console.log('FOR => ' + element.innerText + '  ' + product.name)
         if (element.innerText === product.name) {
-            const findProduct = shoppingCart.find(function(shoopingcart){
+            const findProduct = shoppingCart.find(function (shoopingcart) {
                 return shoopingcart.name === product.name
             })
             duplicateText.innerText = ' x ' + duplicated;
@@ -429,7 +416,7 @@ function updateCartItems(product, duplicated) {//Actualiza el carrito cuando det
     });
 
 
-    console.log('----->' + duplicateText.innerText)
+    //console.log('----->' + duplicateText.innerText)
 
 }
 
