@@ -357,7 +357,6 @@ function openProductDetail(product) {
     addToCartButton.addEventListener('click', function () {
         isDuplicate(product)
     })
-
 }
 
 var duplicated = 1;
@@ -370,13 +369,14 @@ function isDuplicate(product) {//Productos en carrito
     for (const elemento of totalProducts){
         if (productosUnicos.has(elemento)){
             shoppingCart.push(elemento)
-            console.log('Repetido')
+            console.log('elemento ' + JSON.stringify(elemento) )
+            console.log('Repetido ')
         }else{
             productosUnicos.add(elemento)
             console.log('No Repetido')
         }
     }
-console.log("Unicos -> " + JSON.stringify(productosUnicos) )
+console.log("Unicos -> " + productosUnicos )
 console.log("Total -> " + shoppingCart.length)
 
 }
