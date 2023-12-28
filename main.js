@@ -406,12 +406,21 @@ function openProductDetail(product) {
 }
 
 function addProductToCart(product) {
+  //Funcion para renderizar los productos en el carrito
   totalProducts.push(product); //Agrega producto a arreglo total
   productsCount(totalProducts); //Cuenta el producto
-  emptyCart.classList.add('inactive')//Quita la imagen de carrito vacio
+  emptyCart.classList.add("inactive"); //Quita la imagen de carrito vacio
   console.log("Cantidad -> " + totalProducts.length);
   console.log(JSON.stringify(totalProducts));
 
+  const uniqueProducts = new Set()
+  uniqueProducts.add(product)
+  console.log("Productos unicos -> " + uniqueProducts)
+
+
+
+}
+/*
   const addProductToCartHTML =
   `
   <div class="my-order-content">
@@ -427,9 +436,7 @@ function addProductToCart(product) {
   </div>
   `
   shoopingCartContainer.innerHTML += addProductToCartHTML
-}
-
-
+*/
 
 function productsCount(totalProducts) {
   const total = totalProducts.length; //Detecta la cantidad de productos del arreglo
@@ -446,6 +453,5 @@ function search(iSearch) {
     //Acomoda el footer según la cantidad de articulos mostrados en la vista
     footer.style.position = "fixed";
     console.log(filtro.length);
-    
   }
 }
