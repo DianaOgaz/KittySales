@@ -475,9 +475,12 @@ nav {
     display: flex;
     margin-right: 20px;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
-
+.add-to-cart-text{
+    color: var(--white);
+    padding-left: 10px;
+}
 
 
 footer {
@@ -492,6 +495,7 @@ footer {
     display: flex;
     justify-content: space-between;
     padding: 26px;
+    height: 100px;
 }
 
 
@@ -530,7 +534,7 @@ footer {
     }
 
     .product-detail {
-        left: 45%;
+        left: 50%;
         transform: translate(-50%, -50%);
         /*mantiene el elemento centrado horizontalmente y verticalmente */
 
