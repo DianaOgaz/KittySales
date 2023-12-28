@@ -13,8 +13,7 @@ const footer = document.querySelector("footer"); //pie de página
 const emptyCart = document.querySelector(".empty-cart"); //carrito vacio
 const shoopingCartContainer = document.querySelector(".cart-detail-order"); //producto en carrito de compras
 const deleteItems = document.querySelectorAll("#closeProductInCart"); //boton eliminar producto de carrito
-
-
+const itemsCount = document.querySelector("#itemsCount"); //icono contador de items
 
 //Menu > Botones de búsqueda
 const bigKittys = document.querySelector("#big-kittys");
@@ -378,7 +377,6 @@ function renderProducts(arr) {
 renderProducts(productList);
 
 function openProductDetail(product) {
-  
   const productDetailHTML = `
 	<div class="product-detail-close">
 	<img src="./icons/icon_close.png" alt="close">
@@ -397,21 +395,45 @@ function openProductDetail(product) {
 	`;
   productDetailContainer.innerHTML = productDetailHTML; //Modificamos el HTML
   productDetailContainer.classList.remove("inactive"); // se muestra el producto en la pantalla
-  
+
   const closeProductD = document.querySelector(".product-detail-close"); //Cierra el detalle del producto
   closeProductD.addEventListener("click", closeProductDetail);
-  
+
   const addItem = document.querySelector("#add-to-cart-button"); //agregar producto al carrito
-  addItem.addEventListener("click", function(){
-    addProductToCart(product)
-    
-  })
+  addItem.addEventListener("click", function () {
+    addProductToCart(product);
+  });
 }
 
-function addProductToCart(product){
-totalProducts.push(product)
-console.log("Cantidad -> " + totalProducts.length)
-console.log(JSON.stringify(totalProducts))
+function addProductToCart(product) {
+  totalProducts.push(product); //Agrega producto a arreglo total
+  productsCount(totalProducts); //Cuenta el producto
+  emptyCart.classList.add('inactive')//Quita la imagen de carrito vacio
+  console.log("Cantidad -> " + totalProducts.length);
+  console.log(JSON.stringify(totalProducts));
+
+  const addProductToCartHTML =
+  `
+  <div class="my-order-content">
+  <div class="shopping-cart">
+  <figure>
+  <img src="${product.image}">
+  </figure>
+  <p class ="productName" >${product.name} </p>
+  <p id="duplicateCount">0</p>
+  <p>$${product.price}</p>
+  <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
+  </div>
+  </div>
+  `
+  shoopingCartContainer.innerHTML += addProductToCartHTML
+}
+
+
+
+function productsCount(totalProducts) {
+  const total = totalProducts.length; //Detecta la cantidad de productos del arreglo
+  itemsCount.innerText = total; //Coloca el total en el texto del html
 }
 
 function search(iSearch) {
@@ -424,6 +446,6 @@ function search(iSearch) {
     //Acomoda el footer según la cantidad de articulos mostrados en la vista
     footer.style.position = "fixed";
     console.log(filtro.length);
+    
   }
 }
-
