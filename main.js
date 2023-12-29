@@ -23,9 +23,9 @@ const funnyKitty = document.querySelector("#funny-kittys");
 const kittyInCustom = document.querySelector("#kittys-in-custom");
 
 //Variables globales
-let shoppingCart = []; //Arreglo para el carrito de compras
-let totalProducts = []; //Arreglo para el total de los productos
-let iSearch = ""; //Variable el método de busqueda y filtrado para las variables
+const shoppingCart = []; //Arreglo para el carrito de compras
+const totalProducts = []; //Arreglo para el total de los productos
+const iSearch = ""; //Variable el método de busqueda y filtrado para las variables
 
 //click es un evento de escucha, es una palabra reservada para este metodo
 
@@ -413,30 +413,57 @@ function addProductToCart(product) {
   console.log("Cantidad -> " + totalProducts.length);
   console.log(JSON.stringify(totalProducts));
 
-  const uniqueProducts = new Set()
-  uniqueProducts.add(product)
-  console.log("Productos unicos -> " + uniqueProducts)
-
-
+notDuplicate(totalProducts)
+//console.log(uniqueProducts);
+console.log("Shopping cart -> " + shoppingCart);
 
 }
-/*
-  const addProductToCartHTML =
-  `
-  <div class="my-order-content">
-  <div class="shopping-cart">
-  <figure>
-  <img src="${product.image}">
-  </figure>
-  <p class ="productName" >${product.name} </p>
-  <p id="duplicateCount">0</p>
-  <p>$${product.price}</p>
-  <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
-  </div>
-  </div>
-  `
-  shoopingCartContainer.innerHTML += addProductToCartHTML
-*/
+
+function notDuplicate(totalProducts) {
+  const shoppingCart = {}; // Objeto para llevar un registro de nombres ya vistos
+  const uniqueProducts = totalProducts.filter((product) => {
+    // Verificar si el nombre del producto ya ha sido visto
+    if (!shoppingCart[product.name]) {
+      shoppingCart[product.name] = true; // Marcar el nombre como visto
+      return true; // Mantener el producto en el arreglo resultante
+    }
+    return false; // Descartar productos repetidos
+  });
+
+  console.log(uniqueProducts);
+  shoopingCartContainer.innerHTML = '';
+
+  totalProducts.forEach((product) => {
+    // Verificar si el nombre del producto ya ha sido visto
+    if (!totalProducts[product.name]) {
+      totalProducts[product.name] = {
+        count: 1, // Inicializar el contador en 1 si es la primera vez que se encuentra el producto
+        product: product, // Mantener una referencia al objeto de producto
+      };
+    } else {
+      // Incrementar el contador si el producto ya está en el carrito
+      console.log(totalProducts[product.name].count++)
+    }
+  });
+
+  for (const productName in shoppingCart) {
+    const cartItem = shoppingCart[productName];
+    const addProductToCartHTML = `
+      <div class="my-order-content">
+        <div class="shopping-cart">
+          <figure>
+            <img src="${cartItem.image}">
+          </figure>
+          <p class="productName">${cartItem.name}</p>
+          <p id="itemCount">${cartItem.count}</p>
+          <p>$${cartItem.price}</p>
+          <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
+        </div>
+      </div>
+    `;
+    shoopingCartContainer.innerHTML += addProductToCartHTML;
+  }
+}
 
 function productsCount(totalProducts) {
   const total = totalProducts.length; //Detecta la cantidad de productos del arreglo
