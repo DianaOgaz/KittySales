@@ -413,10 +413,8 @@ function addProductToCart(product) {
   console.log("Cantidad -> " + totalProducts.length);
   console.log(JSON.stringify(totalProducts));
 
-notDuplicate(totalProducts)
-//console.log(uniqueProducts);
-console.log("Shopping cart -> " + shoppingCart);
-
+  notDuplicate(totalProducts);
+  //console.log(uniqueProducts);
 }
 
 function notDuplicate(totalProducts) {
@@ -431,7 +429,7 @@ function notDuplicate(totalProducts) {
   });
 
   console.log(uniqueProducts);
-  shoopingCartContainer.innerHTML = '';
+  shoopingCartContainer.innerHTML = "";
 
   totalProducts.forEach((product) => {
     // Verificar si el nombre del producto ya ha sido visto
@@ -442,12 +440,12 @@ function notDuplicate(totalProducts) {
       };
     } else {
       // Incrementar el contador si el producto ya está en el carrito
-      console.log(totalProducts[product.name].count++)
+      console.log(totalProducts[product.name].count++);
     }
   });
-
-  for (const productName in shoppingCart) {
-    const cartItem = shoppingCart[productName];
+  console.log("Shopping cart -> " + JSON.stringify(shoppingCart.name));
+  for (const product in shoppingCart) {
+    const cartItem = shoppingCart[product];
     const addProductToCartHTML = `
       <div class="my-order-content">
         <div class="shopping-cart">
