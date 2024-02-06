@@ -419,43 +419,35 @@ function addProductToCart(product) {
 
 function notDuplicate(totalProducts) {
   const shoppingCart = {}; // Objeto para llevar un registro de nombres ya vistos
-  const uniqueProducts = totalProducts.filter((product) => {
-    // Verificar si el nombre del producto ya ha sido visto
-    if (!shoppingCart[product.name]) {
-      shoppingCart[product.name] = true; // Marcar el nombre como visto
-      return true; // Mantener el producto en el arreglo resultante
-    }
-    return false; // Descartar productos repetidos
-  });
-
-  console.log(uniqueProducts);
   shoopingCartContainer.innerHTML = "";
 
   totalProducts.forEach((product) => {
     // Verificar si el nombre del producto ya ha sido visto
-    if (!totalProducts[product.name]) {
-      totalProducts[product.name] = {
+    if (!shoppingCart[product.name]) {
+      shoppingCart[product.name] = {
         count: 1, // Inicializar el contador en 1 si es la primera vez que se encuentra el producto
         product: product, // Mantener una referencia al objeto de producto
       };
     } else {
       // Incrementar el contador si el producto ya está en el carrito
-      console.log(totalProducts[product.name].count++);
+      shoppingCart[product.name].count++;
     }
   });
-  console.log("Shopping cart -> " + JSON.stringify(shoppingCart.name));
-  for (const product in shoppingCart) {
-    const cartItem = shoppingCart[product];
+
+  console.log("Shopping cart -> " + JSON.stringify(shoppingCart));
+
+  for (const productName in shoppingCart) {
+    const cartItem = shoppingCart[productName];
     const addProductToCartHTML = `
       <div class="my-order-content">
         <div class="shopping-cart">
           <figure>
-            <img src="${cartItem.image}">
+            <img src="${product.image}">
           </figure>
-          <p class="productName">${cartItem.name}</p>
-          <p id="itemCount">${cartItem.count}</p>
-          <p>$${cartItem.price}</p>
-          <img id="closeProductInCart" src="./icons/icon_close.png" alt="close">
+          <p class="nombreDelProducto">${product.name}</p>
+          <p id="cantidadItem">${cartItem.count}</p>
+          <p>$ ${product.price}</p>
+          <img id="cerrarProductoEnCarrito" src="./icons/icono_close.png">
         </div>
       </div>
     `;
